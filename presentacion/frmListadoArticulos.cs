@@ -46,8 +46,7 @@ namespace presentacion
 
             for (int i = 0; i < 10; i++) {
                 Articulo auxArticulo = new Articulo(urlImagen, precio, nombreProducto);
-                TarjetaProducto producto = new TarjetaProducto();
-                producto.asignarArticulo(auxArticulo);
+                TarjetaProducto producto = new TarjetaProducto(auxArticulo);
                 flpListadoProductos.Controls.Add(producto);
             }
         }

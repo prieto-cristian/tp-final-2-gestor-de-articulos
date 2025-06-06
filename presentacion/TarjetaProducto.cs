@@ -22,20 +22,18 @@ namespace presentacion
         {
             this.articulo = articulo;
             InitializeComponent();
-            lblNombreProducto.ForeColor = SystemColors.ControlText;
-            lblPrecioProducto.ForeColor = SystemColors.ControlText;
-        }
-        private void cargarImagen(string urlImagen)
-        {
-            try
-            {
-                pbxImagenProducto.Load(urlImagen);
-            }
-            catch (Exception ex){
-                throw ex;
-            }
+            Nombre = articulo.Nombre;
+            Precio = "$ " + articulo.Precio.ToString();
+            cargarImagen(articulo.UrlImagen);
         }
 
+        // Uso de LoadAsync para mejorar la carga al momento de filtrar los articulos.
+        private void cargarImagen(string urlImagen)
+        {
+            pbxImagenProducto.LoadAsync(urlImagen);
+        }
+
+        
         public void asignarArticulo(Articulo unArticulo)
         {
             this.articulo = unArticulo;
@@ -56,6 +54,9 @@ namespace presentacion
             set => lblPrecioProducto.Text = value;
         }
 
+
+        // En esta seccion se agrega el evento click en los distintos controles,
+        // simulando que la tarjeta se pueda abrir desde cualquier parte del rectangulo.
         private void lblPrecioProducto_Click(object sender, EventArgs e)
         {
             abrirVentanaInfoArticulo();
@@ -71,6 +72,7 @@ namespace presentacion
             abrirVentanaInfoArticulo();
         }
 
+        // Metodo para abrir la informacion del articulo clickeado
         private void abrirVentanaInfoArticulo()
         {
             frmAgregarArticulo frmAgregarArticulo = new frmAgregarArticulo(articulo);

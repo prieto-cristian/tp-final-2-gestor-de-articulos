@@ -1,4 +1,6 @@
-﻿namespace presentacion
+﻿using System.Drawing;
+
+namespace presentacion
 {
     partial class TarjetaProducto
     {
@@ -59,6 +61,7 @@
             // pbxImagenProducto
             // 
             this.pbxImagenProducto.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbxImagenProducto.Enabled = false;
             this.pbxImagenProducto.Location = new System.Drawing.Point(0, 0);
             this.pbxImagenProducto.Name = "pbxImagenProducto";
             this.pbxImagenProducto.Size = new System.Drawing.Size(80, 83);
@@ -74,8 +77,10 @@
             this.Controls.Add(this.lblPrecioProducto);
             this.Controls.Add(this.lblNombreProducto);
             this.Controls.Add(this.pbxImagenProducto);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "TarjetaProducto";
             this.Size = new System.Drawing.Size(323, 83);
+            this.Click += new System.EventHandler(this.TarjetaProducto_Click_1);
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagenProducto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

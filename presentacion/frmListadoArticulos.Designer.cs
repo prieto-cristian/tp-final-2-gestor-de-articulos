@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.flpListadoProductos = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAgregarArticulo = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnAgregarArticulo = new System.Windows.Forms.Button();
+            this.flpListadoProductos = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,13 +45,12 @@
             this.panel1.Size = new System.Drawing.Size(800, 100);
             this.panel1.TabIndex = 4;
             // 
-            // flpListadoProductos
+            // textBox1
             // 
-            this.flpListadoProductos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpListadoProductos.Location = new System.Drawing.Point(0, 100);
-            this.flpListadoProductos.Name = "flpListadoProductos";
-            this.flpListadoProductos.Size = new System.Drawing.Size(800, 499);
-            this.flpListadoProductos.TabIndex = 5;
+            this.textBox1.Location = new System.Drawing.Point(207, 41);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(315, 20);
+            this.textBox1.TabIndex = 1;
             // 
             // btnAgregarArticulo
             // 
@@ -65,13 +64,15 @@
             this.btnAgregarArticulo.TabIndex = 0;
             this.btnAgregarArticulo.Text = "Nuevo";
             this.btnAgregarArticulo.UseVisualStyleBackColor = false;
+            this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
             // 
-            // textBox1
+            // flpListadoProductos
             // 
-            this.textBox1.Location = new System.Drawing.Point(189, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(315, 20);
-            this.textBox1.TabIndex = 1;
+            this.flpListadoProductos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpListadoProductos.Location = new System.Drawing.Point(0, 100);
+            this.flpListadoProductos.Name = "flpListadoProductos";
+            this.flpListadoProductos.Size = new System.Drawing.Size(800, 499);
+            this.flpListadoProductos.TabIndex = 5;
             // 
             // frmListadoArticulos
             // 

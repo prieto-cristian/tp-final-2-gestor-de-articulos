@@ -51,5 +51,11 @@ namespace presentacion
                 flpListadoProductos.Controls.Add(producto);
             }
         }
+
+        private void btnAgregarArticulo_Click(object sender, EventArgs e)
+        {
+            frmAgregarArticulo frmAgregarArticulo = new frmAgregarArticulo();
+            frmAgregarArticulo.ShowDialog();
+        }
     }
 }

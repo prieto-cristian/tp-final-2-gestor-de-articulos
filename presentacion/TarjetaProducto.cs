@@ -22,6 +22,8 @@ namespace presentacion
         {
             this.articulo = articulo;
             InitializeComponent();
+            lblNombreProducto.ForeColor = SystemColors.ControlText;
+            lblPrecioProducto.ForeColor = SystemColors.ControlText;
         }
         private void cargarImagen(string urlImagen)
         {
@@ -56,12 +58,23 @@ namespace presentacion
 
         private void lblPrecioProducto_Click(object sender, EventArgs e)
         {
+            abrirVentanaInfoArticulo();
+        }
 
+        private void TarjetaProducto_Click_1(object sender, EventArgs e)
+        {
+            abrirVentanaInfoArticulo();
         }
 
         private void lblNombreProducto_Click(object sender, EventArgs e)
         {
+            abrirVentanaInfoArticulo();
+        }
 
+        private void abrirVentanaInfoArticulo()
+        {
+            frmAgregarArticulo frmAgregarArticulo = new frmAgregarArticulo(articulo);
+            frmAgregarArticulo.ShowDialog();
         }
     }
 }

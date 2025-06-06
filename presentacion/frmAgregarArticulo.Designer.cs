@@ -241,6 +241,7 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCodigoArticulo);
             this.Name = "frmAgregarArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Artículo";
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).EndInit();
             this.ResumeLayout(false);

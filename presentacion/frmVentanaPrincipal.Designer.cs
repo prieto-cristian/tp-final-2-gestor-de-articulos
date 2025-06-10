@@ -199,6 +199,7 @@
             this.Controls.Add(this.panelNombreVentana);
             this.Controls.Add(this.panelMenu);
             this.IsMdiContainer = true;
+            this.MaximizeBox = false;
             this.Name = "frmVentanaPrincipal";
             this.Text = "Ventana Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

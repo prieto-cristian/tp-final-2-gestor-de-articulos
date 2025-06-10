@@ -40,6 +40,7 @@
             // 
             // lblCantidadArticulos
             // 
+            this.lblCantidadArticulos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCantidadArticulos.AutoSize = true;
             this.lblCantidadArticulos.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantidadArticulos.Location = new System.Drawing.Point(170, 271);
@@ -50,6 +51,7 @@
             // 
             // lblArticuloMasCaro
             // 
+            this.lblArticuloMasCaro.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblArticuloMasCaro.AutoSize = true;
             this.lblArticuloMasCaro.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArticuloMasCaro.Location = new System.Drawing.Point(169, 85);
@@ -60,6 +62,7 @@
             // 
             // lblArticuloMasBarato
             // 
+            this.lblArticuloMasBarato.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblArticuloMasBarato.AutoSize = true;
             this.lblArticuloMasBarato.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArticuloMasBarato.Location = new System.Drawing.Point(749, 85);
@@ -70,6 +73,7 @@
             // 
             // lblMarcaConMasArticulos
             // 
+            this.lblMarcaConMasArticulos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMarcaConMasArticulos.AutoSize = true;
             this.lblMarcaConMasArticulos.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMarcaConMasArticulos.Location = new System.Drawing.Point(750, 261);
@@ -80,6 +84,7 @@
             // 
             // lblNumeroArticulos
             // 
+            this.lblNumeroArticulos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNumeroArticulos.AutoSize = true;
             this.lblNumeroArticulos.Font = new System.Drawing.Font("Nirmala UI", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumeroArticulos.Location = new System.Drawing.Point(247, 311);
@@ -90,6 +95,7 @@
             // 
             // lblNumeroArticulosDeUnaMarca
             // 
+            this.lblNumeroArticulosDeUnaMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNumeroArticulosDeUnaMarca.AutoSize = true;
             this.lblNumeroArticulosDeUnaMarca.Font = new System.Drawing.Font("Nirmala UI", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumeroArticulosDeUnaMarca.Location = new System.Drawing.Point(769, 311);
@@ -100,6 +106,9 @@
             // 
             // tpArticuloMasBarato
             // 
+            this.tpArticuloMasBarato.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tpArticuloMasBarato.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tpArticuloMasBarato.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tpArticuloMasBarato.Location = new System.Drawing.Point(753, 112);
             this.tpArticuloMasBarato.Name = "tpArticuloMasBarato";
             this.tpArticuloMasBarato.Nombre = "Nombre Producto";
@@ -109,6 +118,9 @@
             // 
             // tpArticuloMasCaro
             // 
+            this.tpArticuloMasCaro.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tpArticuloMasCaro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tpArticuloMasCaro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tpArticuloMasCaro.Location = new System.Drawing.Point(173, 112);
             this.tpArticuloMasCaro.Name = "tpArticuloMasCaro";
             this.tpArticuloMasCaro.Nombre = "Nombre Producto";

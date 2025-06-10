@@ -38,6 +38,7 @@
             this.panelNombreVentana = new System.Windows.Forms.Panel();
             this.lblNombreVentana = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelNombreVentana.SuspendLayout();
@@ -46,6 +47,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelMenu.Controls.Add(this.btnSalir);
             this.panelMenu.Controls.Add(this.btnCategoria);
             this.panelMenu.Controls.Add(this.btnMarcas);
             this.panelMenu.Controls.Add(this.btnArticulos);
@@ -190,6 +192,23 @@
             this.panel1.Size = new System.Drawing.Size(1017, 661);
             this.panel1.TabIndex = 3;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSalir.FlatAppearance.BorderSize = 0;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.Color.White;
+            this.btnSalir.Image = global::presentacion.Properties.Resources.cruz_white;
+            this.btnSalir.Location = new System.Drawing.Point(0, 706);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(217, 55);
+            this.btnSalir.TabIndex = 5;
+            this.btnSalir.Text = "   Salir";
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // frmVentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,6 +246,7 @@
         private System.Windows.Forms.Button btnArticulos;
         private System.Windows.Forms.Button btnInicio;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
 

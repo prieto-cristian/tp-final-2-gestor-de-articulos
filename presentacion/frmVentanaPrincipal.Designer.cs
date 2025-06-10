@@ -114,6 +114,7 @@
             this.btnMarcas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnMarcas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMarcas.UseVisualStyleBackColor = true;
+            this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
             // 
             // btnArticulos
             // 

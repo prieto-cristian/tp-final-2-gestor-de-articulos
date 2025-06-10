@@ -49,6 +49,7 @@ namespace presentacion
         }
         private void cerrarVentanaActual()
         {
+            panel1.Controls.Clear();
             if (hijoActual != null) {
                 hijoActual.Close();
             }
@@ -57,6 +58,16 @@ namespace presentacion
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnMarcas_Click(object sender, EventArgs e)
+        {
+            cerrarVentanaActual();
+            frmListadoMarcas ventanaMarca = new frmListadoMarcas();
+            ventanaMarca.MdiParent = this;
+            panel1.Controls.Add(ventanaMarca);
+            panel1.Tag = ventanaMarca;
+            ventanaMarca.Show();
         }
     }
 }

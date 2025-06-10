@@ -69,5 +69,15 @@ namespace presentacion
             panel1.Tag = ventanaMarca;
             ventanaMarca.Show();
         }
+
+        private void btnCategoria_Click(object sender, EventArgs e)
+        {
+            cerrarVentanaActual();
+            frmListadoCategoria ventanaCategoria = new frmListadoCategoria();
+            ventanaCategoria.MdiParent = this;
+            panel1.Controls.Add(ventanaCategoria);
+            panel1.Tag = ventanaCategoria;
+            ventanaCategoria.Show();
+        }
     }
 }

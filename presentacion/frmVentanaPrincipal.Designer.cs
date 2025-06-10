@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnCategoria = new System.Windows.Forms.Button();
-            this.btnMarcas = new System.Windows.Forms.Button();
-            this.btnArticulos = new System.Windows.Forms.Button();
-            this.btnInicio = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.lblNombreEmpresa = new System.Windows.Forms.Label();
             this.panelNombreVentana = new System.Windows.Forms.Panel();
             this.lblNombreVentana = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnCategoria = new System.Windows.Forms.Button();
+            this.btnMarcas = new System.Windows.Forms.Button();
+            this.btnArticulos = new System.Windows.Forms.Button();
+            this.btnInicio = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelNombreVentana.SuspendLayout();
@@ -59,6 +59,60 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(217, 761);
             this.panelMenu.TabIndex = 0;
+            // 
+            // panelLogo
+            // 
+            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(76)))));
+            this.panelLogo.Controls.Add(this.lblNombreEmpresa);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(217, 100);
+            this.panelLogo.TabIndex = 0;
+            // 
+            // lblNombreEmpresa
+            // 
+            this.lblNombreEmpresa.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblNombreEmpresa.AutoSize = true;
+            this.lblNombreEmpresa.Font = new System.Drawing.Font("Nirmala UI", 20F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreEmpresa.ForeColor = System.Drawing.Color.White;
+            this.lblNombreEmpresa.Location = new System.Drawing.Point(42, 9);
+            this.lblNombreEmpresa.Name = "lblNombreEmpresa";
+            this.lblNombreEmpresa.Size = new System.Drawing.Size(121, 74);
+            this.lblNombreEmpresa.TabIndex = 0;
+            this.lblNombreEmpresa.Text = "Prieto\r\nSoftware";
+            this.lblNombreEmpresa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelNombreVentana
+            // 
+            this.panelNombreVentana.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(96)))), ((int)(((byte)(90)))));
+            this.panelNombreVentana.Controls.Add(this.lblNombreVentana);
+            this.panelNombreVentana.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelNombreVentana.Location = new System.Drawing.Point(217, 0);
+            this.panelNombreVentana.Name = "panelNombreVentana";
+            this.panelNombreVentana.Size = new System.Drawing.Size(1017, 100);
+            this.panelNombreVentana.TabIndex = 1;
+            // 
+            // lblNombreVentana
+            // 
+            this.lblNombreVentana.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblNombreVentana.AutoSize = true;
+            this.lblNombreVentana.Font = new System.Drawing.Font("Nirmala UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreVentana.ForeColor = System.Drawing.Color.White;
+            this.lblNombreVentana.Location = new System.Drawing.Point(465, 28);
+            this.lblNombreVentana.Name = "lblNombreVentana";
+            this.lblNombreVentana.Size = new System.Drawing.Size(102, 37);
+            this.lblNombreVentana.TabIndex = 1;
+            this.lblNombreVentana.Text = "INICIO";
+            this.lblNombreVentana.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(217, 100);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1017, 661);
+            this.panel1.TabIndex = 3;
             // 
             // btnSalir
             // 
@@ -95,6 +149,7 @@
             this.btnCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCategoria.UseVisualStyleBackColor = true;
+            this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click);
             // 
             // btnMarcas
             // 
@@ -155,60 +210,6 @@
             this.btnInicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnInicio.UseVisualStyleBackColor = true;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
-            // 
-            // panelLogo
-            // 
-            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(76)))));
-            this.panelLogo.Controls.Add(this.lblNombreEmpresa);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(217, 100);
-            this.panelLogo.TabIndex = 0;
-            // 
-            // lblNombreEmpresa
-            // 
-            this.lblNombreEmpresa.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblNombreEmpresa.AutoSize = true;
-            this.lblNombreEmpresa.Font = new System.Drawing.Font("Nirmala UI", 20F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreEmpresa.ForeColor = System.Drawing.Color.White;
-            this.lblNombreEmpresa.Location = new System.Drawing.Point(42, 9);
-            this.lblNombreEmpresa.Name = "lblNombreEmpresa";
-            this.lblNombreEmpresa.Size = new System.Drawing.Size(121, 74);
-            this.lblNombreEmpresa.TabIndex = 0;
-            this.lblNombreEmpresa.Text = "Prieto\r\nSoftware";
-            this.lblNombreEmpresa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panelNombreVentana
-            // 
-            this.panelNombreVentana.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(96)))), ((int)(((byte)(90)))));
-            this.panelNombreVentana.Controls.Add(this.lblNombreVentana);
-            this.panelNombreVentana.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelNombreVentana.Location = new System.Drawing.Point(217, 0);
-            this.panelNombreVentana.Name = "panelNombreVentana";
-            this.panelNombreVentana.Size = new System.Drawing.Size(1017, 100);
-            this.panelNombreVentana.TabIndex = 1;
-            // 
-            // lblNombreVentana
-            // 
-            this.lblNombreVentana.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblNombreVentana.AutoSize = true;
-            this.lblNombreVentana.Font = new System.Drawing.Font("Nirmala UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreVentana.ForeColor = System.Drawing.Color.White;
-            this.lblNombreVentana.Location = new System.Drawing.Point(465, 28);
-            this.lblNombreVentana.Name = "lblNombreVentana";
-            this.lblNombreVentana.Size = new System.Drawing.Size(102, 37);
-            this.lblNombreVentana.TabIndex = 1;
-            this.lblNombreVentana.Text = "INICIO";
-            this.lblNombreVentana.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(217, 100);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1017, 661);
-            this.panel1.TabIndex = 3;
             // 
             // frmVentanaPrincipal
             // 

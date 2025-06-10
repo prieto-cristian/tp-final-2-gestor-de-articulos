@@ -36,8 +36,12 @@ namespace presentacion
             panel1.Controls.Add(frmResumen);
             panel1.Tag = frmResumen;
             frmResumen.Show();
+            CambiarNombreVentanaActual((Button)sender);
         }
-
+        private void CambiarNombreVentanaActual(Button button)
+        {
+            lblNombreVentana.Text = button.Text.Trim().ToUpper();
+        }
         private void btnArticulos_Click(object sender, EventArgs e)
         {
             cerrarVentanaActual();
@@ -46,6 +50,7 @@ namespace presentacion
             panel1.Controls.Add(frmListado);
             panel1.Tag = frmListado;
             frmListado.Show();
+            CambiarNombreVentanaActual((Button)sender);
         }
         private void cerrarVentanaActual()
         {
@@ -68,6 +73,7 @@ namespace presentacion
             panel1.Controls.Add(ventanaMarca);
             panel1.Tag = ventanaMarca;
             ventanaMarca.Show();
+            CambiarNombreVentanaActual((Button)sender);
         }
 
         private void btnCategoria_Click(object sender, EventArgs e)
@@ -78,6 +84,7 @@ namespace presentacion
             panel1.Controls.Add(ventanaCategoria);
             panel1.Tag = ventanaCategoria;
             ventanaCategoria.Show();
+            CambiarNombreVentanaActual((Button)sender);
         }
     }
 }

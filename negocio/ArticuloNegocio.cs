@@ -57,5 +57,28 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void GuardarArticulo(Articulo unArticulo)
+        {
+            string consultaSQL = "insert into ARTICULOS (Codigo, Descripcion, ImagenUrl, Nombre, Precio, IdMarca, IdCategoria) VALUES (@Codigo, @Descripcion, @ImagenUrl, @Nombre,@Precio, @IdMarca, @IdCategoria)";
+            try
+            {
+                datos.setearConsulta(consultaSQL);
+                datos.parametrizar("@Codigo", unArticulo.CodigoDeArticulo);
+                datos.parametrizar("@Descripcion", unArticulo.Descripcion);
+                datos.parametrizar("@ImagenUrl", unArticulo.UrlImagen);
+                datos.parametrizar("@Nombre", unArticulo.Nombre);
+                datos.parametrizar("@Precio", (decimal)unArticulo.Precio);
+                datos.parametrizar("@IdMarca", unArticulo.MarcaDelArticulo.Id);
+                datos.parametrizar("@IdCategoria", unArticulo.CategoriaDelArticulo.Id);
+
+                datos.guardar();
+            }
+            catch(Exception ex) { throw ex; }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

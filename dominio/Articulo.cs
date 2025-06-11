@@ -9,7 +9,7 @@ namespace dominio
     public class Articulo
     {
         public int Id { get; set; }
-        public int CodigoDeArticulo { get; set; }
+        public string CodigoDeArticulo { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public Marca MarcaDelArticulo { get; set; }
@@ -17,6 +17,7 @@ namespace dominio
         public string UrlImagen { get; set; }
         public double Precio { get; set; }
 
+        public Articulo() { }
         public Articulo(string url, double precio, string nombre)
         {
             this.UrlImagen = url;

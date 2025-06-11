@@ -8,14 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
+using negocio;
 
 namespace presentacion
 {
     public partial class frmListadoArticulos : Form
     {
+        private ArticuloNegocio NegocioArticulo = null;
         public frmListadoArticulos()
         {
             InitializeComponent();
+            this.NegocioArticulo = new ArticuloNegocio();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,13 +43,10 @@ namespace presentacion
 
         private void frmListadoArticulos_Load(object sender, EventArgs e)
         {
-            string urlImagen = "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png";
-            string nombreProducto = "Charmander";
-            double precio = 555;
+            List<Articulo> articulos = NegocioArticulo.listarArticulos();
 
-            for (int i = 0; i < 10; i++) {
-                Articulo auxArticulo = new Articulo(urlImagen, precio, nombreProducto);
-                TarjetaProducto producto = new TarjetaProducto(auxArticulo);
+            foreach (Articulo articulo in articulos){
+                TarjetaProducto producto = new TarjetaProducto(articulo);
                 flpListadoProductos.Controls.Add(producto);
             }
         }

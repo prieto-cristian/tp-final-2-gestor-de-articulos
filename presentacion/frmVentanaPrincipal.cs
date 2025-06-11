@@ -25,6 +25,7 @@ namespace presentacion
             frmResumen.MdiParent = this;
             panel1.Controls.Add(frmResumen);
             panel1.Tag = frmResumen;
+            CambiarBotonActual(btnInicio);
             frmResumen.Show();
         }
 
@@ -35,6 +36,7 @@ namespace presentacion
             frmResumen.MdiParent = this;
             panel1.Controls.Add(frmResumen);
             panel1.Tag = frmResumen;
+            CambiarBotonActual(btnInicio);
             frmResumen.Show();
             CambiarNombreVentanaActual((Button)sender);
         }
@@ -49,6 +51,7 @@ namespace presentacion
             frmListado.MdiParent = this;
             panel1.Controls.Add(frmListado);
             panel1.Tag = frmListado;
+            CambiarBotonActual(btnArticulos);
             frmListado.Show();
             CambiarNombreVentanaActual((Button)sender);
         }
@@ -72,6 +75,7 @@ namespace presentacion
             ventanaMarca.MdiParent = this;
             panel1.Controls.Add(ventanaMarca);
             panel1.Tag = ventanaMarca;
+            CambiarBotonActual(btnMarcas);
             ventanaMarca.Show();
             CambiarNombreVentanaActual((Button)sender);
         }
@@ -83,8 +87,18 @@ namespace presentacion
             ventanaCategoria.MdiParent = this;
             panel1.Controls.Add(ventanaCategoria);
             panel1.Tag = ventanaCategoria;
+            CambiarBotonActual(btnCategoria);
             ventanaCategoria.Show();
             CambiarNombreVentanaActual((Button)sender);
+        }
+        private void CambiarBotonActual(Button boton)
+        {
+            if(botonActivoActual != null)
+            {
+                this.botonActivoActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            }
+            this.botonActivoActual = boton;
+            this.botonActivoActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
         }
     }
 }

@@ -15,6 +15,7 @@ namespace presentacion
     public partial class frmListadoArticulos : Form
     {
         private ArticuloNegocio NegocioArticulo = null;
+        List<Articulo> articulos = null;
         public frmListadoArticulos()
         {
             InitializeComponent();
@@ -43,9 +44,15 @@ namespace presentacion
 
         private void frmListadoArticulos_Load(object sender, EventArgs e)
         {
-            List<Articulo> articulos = NegocioArticulo.listarArticulos();
+            ListarArticulos();
+        }
 
-            foreach (Articulo articulo in articulos){
+        private void ListarArticulos()
+        {
+            articulos = NegocioArticulo.listarArticulos();
+
+            foreach (Articulo articulo in articulos)
+            {
                 TarjetaProducto producto = new TarjetaProducto(articulo);
                 flpListadoProductos.Controls.Add(producto);
             }
@@ -55,6 +62,12 @@ namespace presentacion
         {
             frmAgregarArticulo frmAgregarArticulo = new frmAgregarArticulo();
             frmAgregarArticulo.ShowDialog();
+            LimpiarArticulos();
+            ListarArticulos();
+        }
+        private void LimpiarArticulos()
+        {
+            flpListadoProductos.Controls.Clear();
         }
     }
 }

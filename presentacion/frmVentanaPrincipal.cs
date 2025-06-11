@@ -38,12 +38,9 @@ namespace presentacion
             panel1.Tag = frmResumen;
             CambiarBotonActual(btnInicio);
             frmResumen.Show();
-            CambiarNombreVentanaActual((Button)sender);
+            CambiarNombreVentanaActual();
         }
-        private void CambiarNombreVentanaActual(Button button)
-        {
-            lblNombreVentana.Text = button.Text.Trim().ToUpper();
-        }
+        
         private void btnArticulos_Click(object sender, EventArgs e)
         {
             cerrarVentanaActual();
@@ -53,7 +50,7 @@ namespace presentacion
             panel1.Tag = frmListado;
             CambiarBotonActual(btnArticulos);
             frmListado.Show();
-            CambiarNombreVentanaActual((Button)sender);
+            CambiarNombreVentanaActual();
         }
         private void cerrarVentanaActual()
         {
@@ -77,7 +74,7 @@ namespace presentacion
             panel1.Tag = ventanaMarca;
             CambiarBotonActual(btnMarcas);
             ventanaMarca.Show();
-            CambiarNombreVentanaActual((Button)sender);
+            CambiarNombreVentanaActual();
         }
 
         private void btnCategoria_Click(object sender, EventArgs e)
@@ -89,7 +86,11 @@ namespace presentacion
             panel1.Tag = ventanaCategoria;
             CambiarBotonActual(btnCategoria);
             ventanaCategoria.Show();
-            CambiarNombreVentanaActual((Button)sender);
+            CambiarNombreVentanaActual();
+        }
+        private void CambiarNombreVentanaActual()
+        {
+            lblNombreVentana.Text = botonActivoActual.Text.Trim().ToUpper();
         }
         private void CambiarBotonActual(Button boton)
         {

@@ -106,5 +106,21 @@ namespace negocio
 
 
         }
+
+        public void EliminarEsteArticulo(int Id)
+        {
+            string consultaSQL = "DELETE FROM ARTICULOS WHERE Id = @Id";
+            try
+            {
+                datos.setearConsulta(consultaSQL);
+                datos.parametrizar("@Id", Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex) { throw ex; }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

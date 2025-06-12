@@ -18,6 +18,7 @@ namespace presentacion
         public frmAgregarArticulo()
         {
             InitializeComponent();
+            btnEliminar.Visible = false;
         }
 
         public frmAgregarArticulo(Articulo unArticulo)
@@ -112,6 +113,13 @@ namespace presentacion
             {
                 pbxImagen.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW1WFWLAdUk4Uf4vzvwezXvAFnh6eCjY5oHw&s");
             }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            negocio.EliminarEsteArticulo(articuloActual.Id);
+            Close();
         }
     }
 }

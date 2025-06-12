@@ -13,6 +13,7 @@ namespace presentacion
 {
     public partial class TarjetaProducto : UserControl
     {
+        public event EventHandler NotificarCambios;
         private Articulo articulo = null;
         public TarjetaProducto()
         {
@@ -77,6 +78,7 @@ namespace presentacion
         {
             frmAgregarArticulo frmAgregarArticulo = new frmAgregarArticulo(articulo);
             frmAgregarArticulo.ShowDialog();
+            NotificarCambios?.Invoke(this, EventArgs.Empty);
         }
     }
 }

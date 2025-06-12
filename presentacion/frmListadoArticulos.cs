@@ -54,6 +54,11 @@ namespace presentacion
             foreach (Articulo articulo in articulos)
             {
                 TarjetaProducto producto = new TarjetaProducto(articulo);
+                producto.NotificarCambios += (s, args) =>
+                {
+                    LimpiarArticulos();
+                    ListarArticulos();
+                };
                 flpListadoProductos.Controls.Add(producto);
             }
         }

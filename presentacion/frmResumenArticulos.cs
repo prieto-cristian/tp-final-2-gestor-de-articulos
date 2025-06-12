@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
+using negocio;
 
 namespace presentacion
 {
@@ -20,16 +21,13 @@ namespace presentacion
 
         private void frmResumenArticulos_Load(object sender, EventArgs e)
         {
-            Articulo articulo_1 = new Articulo("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/373.png",
-                2882.1283,
-                "Metagross");
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo articuloMasBarato = negocio.ObtenerArticuloMasBarato();
+            Articulo articuloMasCaro = negocio.ObtenerArticuloMasCaro();
 
-            Articulo articulo_2 = new Articulo("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/376.png",
-                123.2,
-                "Salamance");
 
-            tpArticuloMasBarato.asignarArticulo(articulo_2);
-            tpArticuloMasCaro.asignarArticulo(articulo_1);
+            tpArticuloMasBarato.asignarArticulo(articuloMasBarato);
+            tpArticuloMasCaro.asignarArticulo(articuloMasCaro);
         }
     }
 }

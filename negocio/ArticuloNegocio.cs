@@ -122,5 +122,83 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        
+        public Articulo ObtenerArticuloMasBarato()
+        {
+            string consultaSQL = "select TOP 1 A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id idMarca, M.Descripcion descripcionMarca, C.Id idCategoria, C.Descripcion descripcionCategorias From ARTICULOS A, MARCAS M, CATEGORIAS C WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id ORDER BY Precio ASC";
+            Articulo aux = new Articulo();
+            try
+            {
+                datos.setearConsulta(consultaSQL);
+                datos.ejecutarAccion();
+
+                while (datos.Lector.Read())
+                {
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Precio = Decimal.ToDouble((decimal)datos.Lector["Precio"]);
+                    aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
+                    aux.CodigoDeArticulo = (string)datos.Lector["Codigo"];
+
+                    Marca auxMarca = new Marca();
+                    auxMarca.Id = (int)datos.Lector["idMarca"];
+                    auxMarca.Descripcion = (string)datos.Lector["descripcionMarca"];
+
+                    Categoria auxCategoria = new Categoria();
+                    auxCategoria.Id = (int)datos.Lector["idCategoria"];
+                    auxCategoria.Descripcion = (string)datos.Lector["descripcionCategorias"];
+
+                    aux.CategoriaDelArticulo = auxCategoria;
+                    aux.MarcaDelArticulo = auxMarca;
+                }
+
+                return aux;
+            }
+            catch(Exception ex) { throw ex; }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public Articulo ObtenerArticuloMasCaro()
+        {
+            string consultaSQL = "select TOP 1 A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id idMarca, M.Descripcion descripcionMarca, C.Id idCategoria, C.Descripcion descripcionCategorias From ARTICULOS A, MARCAS M, CATEGORIAS C WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id ORDER BY Precio DESC";
+            Articulo aux = new Articulo();
+            try
+            {
+                datos.setearConsulta(consultaSQL);
+                datos.ejecutarAccion();
+
+                while (datos.Lector.Read())
+                {
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Precio = Decimal.ToDouble((decimal)datos.Lector["Precio"]);
+                    aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
+                    aux.CodigoDeArticulo = (string)datos.Lector["Codigo"];
+
+                    Marca auxMarca = new Marca();
+                    auxMarca.Id = (int)datos.Lector["idMarca"];
+                    auxMarca.Descripcion = (string)datos.Lector["descripcionMarca"];
+
+                    Categoria auxCategoria = new Categoria();
+                    auxCategoria.Id = (int)datos.Lector["idCategoria"];
+                    auxCategoria.Descripcion = (string)datos.Lector["descripcionCategorias"];
+
+                    aux.CategoriaDelArticulo = auxCategoria;
+                    aux.MarcaDelArticulo = auxMarca;
+                }
+
+                return aux;
+            }
+            catch (Exception ex) { throw ex; }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

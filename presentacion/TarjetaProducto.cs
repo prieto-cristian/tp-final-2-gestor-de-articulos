@@ -40,7 +40,7 @@ namespace presentacion
             this.articulo = unArticulo;
             Nombre = unArticulo.Nombre;
             Precio = "$ " + unArticulo.Precio;
-           cargarImagen(unArticulo.UrlImagen);
+            cargarImagen(unArticulo.UrlImagen);
         }
 
         public string Nombre

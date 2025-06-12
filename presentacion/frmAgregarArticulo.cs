@@ -39,6 +39,19 @@ namespace presentacion
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo nuevoArticulo = new Articulo();
+            // Obtener los datos de la Ventana
+            nuevoArticulo.CodigoDeArticulo = txtCodigoArticulo.Text;
+            nuevoArticulo.Descripcion = txtDescripcion.Text;
+            nuevoArticulo.Precio = double.Parse(txtPrecio.Text);
+            nuevoArticulo.MarcaDelArticulo = (Marca)cbxMarca.SelectedItem;
+            nuevoArticulo.CategoriaDelArticulo = (Categoria)cbxCategoria.SelectedItem;
+            nuevoArticulo.Nombre = txtNombre.Text;
+            nuevoArticulo.UrlImagen = txtUrlImagen.Text;
+
+            negocio.GuardarArticulo(nuevoArticulo);
+            Close();
         }
 
         private void frmAgregarArticulo_Load(object sender, EventArgs e)

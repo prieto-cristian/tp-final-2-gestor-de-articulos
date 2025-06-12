@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
+using negocio;
 
 namespace presentacion
 {
@@ -36,7 +37,20 @@ namespace presentacion
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+        }
 
+        private void frmAgregarArticulo_Load(object sender, EventArgs e)
+        {
+            // Cargar Marcas
+            CargarMarcas();
+        }
+        private void CargarMarcas()
+        {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            cbxMarca.DataSource = marcaNegocio.listarMarcas();
+            cbxMarca.ValueMember = "Id";
+            cbxMarca.DisplayMember = "Descripcion";
+            cbxMarca.SelectedIndex = -1;
         }
     }
 }

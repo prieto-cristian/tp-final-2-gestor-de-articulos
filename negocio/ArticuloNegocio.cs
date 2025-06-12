@@ -80,5 +80,31 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void ModificarArticulo(Articulo unArticulo)
+        {
+            string consultaSQL = "UPDATE ARTICULOS SET Codigo = @Codigo, Nombre = @Nombre,Descripcion = @Descripcion,IdMarca = @IdMarca, IdCategoria = @IdCategoria,ImagenUrl = @UrlImagen, Precio = @Precio WHERE Id = @Id";
+            try
+            {
+                datos.setearConsulta(consultaSQL);
+                datos.parametrizar("@Codigo", unArticulo.CodigoDeArticulo);
+                datos.parametrizar("@Nombre", unArticulo.Nombre);
+                datos.parametrizar("@Descripcion", unArticulo.Descripcion);
+                datos.parametrizar("@IdMarca", unArticulo.MarcaDelArticulo.Id);
+                datos.parametrizar("@IdCategoria", unArticulo.CategoriaDelArticulo.Id);
+                datos.parametrizar("@UrlImagen", unArticulo.UrlImagen);
+                datos.parametrizar("@Precio", unArticulo.Precio);
+                datos.parametrizar("@Id", unArticulo.Id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex) { throw ex; }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+
+        }
     }
 }

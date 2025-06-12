@@ -14,6 +14,7 @@ namespace presentacion
 {
     public partial class frmAgregarArticulo : Form
     {
+        private Articulo articuloActual = null;
         public frmAgregarArticulo()
         {
             InitializeComponent();
@@ -25,11 +26,7 @@ namespace presentacion
             Text = "Modificar Artículo";
             btnCrear.Text = "Modificar";
             lblTitulo.Text = "Modificar Artículo";
-            txtNombre.Text = unArticulo.Nombre;
-            txtPrecio.Text = unArticulo.Precio.ToString();
-            txtUrlImagen.Text = unArticulo.UrlImagen;
-
-            CargarImagen(unArticulo.UrlImagen);
+            this.articuloActual = unArticulo;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -40,42 +37,64 @@ namespace presentacion
         private void btnCrear_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            Articulo nuevoArticulo = new Articulo();
+            if(this.articuloActual == null)
+            {
+                articuloActual = new Articulo();
+            }
             // Obtener los datos de la Ventana
-            nuevoArticulo.CodigoDeArticulo = txtCodigoArticulo.Text;
-            nuevoArticulo.Descripcion = txtDescripcion.Text;
-            nuevoArticulo.Precio = double.Parse(txtPrecio.Text);
-            nuevoArticulo.MarcaDelArticulo = (Marca)cbxMarca.SelectedItem;
-            nuevoArticulo.CategoriaDelArticulo = (Categoria)cbxCategoria.SelectedItem;
-            nuevoArticulo.Nombre = txtNombre.Text;
-            nuevoArticulo.UrlImagen = txtUrlImagen.Text;
+            articuloActual.CodigoDeArticulo = txtCodigoArticulo.Text;
+            articuloActual.Descripcion = txtDescripcion.Text;
+            articuloActual.Precio = double.Parse(txtPrecio.Text);
+            articuloActual.MarcaDelArticulo = (Marca)cbxMarca.SelectedItem;
+            articuloActual.CategoriaDelArticulo = (Categoria)cbxCategoria.SelectedItem;
+            articuloActual.Nombre = txtNombre.Text;
+            articuloActual.UrlImagen = txtUrlImagen.Text;
 
-            negocio.GuardarArticulo(nuevoArticulo);
+            if(articuloActual.Id != 0) {
+                negocio.ModificarArticulo(articuloActual);
+            }
+            else
+            {
+                negocio.GuardarArticulo(articuloActual);
+            }
             Close();
         }
 
         private void frmAgregarArticulo_Load(object sender, EventArgs e)
         {
-            // Cargar Marcas
-            CargarMarcas();
             CargarCategorias();
+            CargarMarcas();
+            if (this.articuloActual != null)
+            {
+                // Cargar los datos del articulo en la ventana
+                txtNombre.Text = articuloActual.Nombre;
+                txtPrecio.Text = articuloActual.Precio.ToString();
+                txtCodigoArticulo.Text = articuloActual.CodigoDeArticulo;
+                txtUrlImagen.Text = articuloActual.UrlImagen;
+                txtDescripcion.Text = articuloActual.Descripcion;
+
+                cbxMarca.SelectedValue = articuloActual.MarcaDelArticulo.Id;
+                cbxCategoria.SelectedValue = articuloActual.CategoriaDelArticulo.Id;
+                CargarImagen(articuloActual.UrlImagen);
+            }
         }
         private void CargarMarcas()
         {
             MarcaNegocio marcaNegocio = new MarcaNegocio();
-            cbxMarca.DataSource = marcaNegocio.listarMarcas();
-            cbxMarca.ValueMember = "Id";
             cbxMarca.DisplayMember = "Descripcion";
+            cbxMarca.ValueMember = "Id";
+            cbxMarca.DataSource = marcaNegocio.listarMarcas();
             cbxMarca.SelectedIndex = -1;
         }
 
-        private void CargarCategorias()
+        private void CargarCategorias(bool esParaNuevoArticulo = false)
         {
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-            cbxCategoria.DataSource = categoriaNegocio.listarCategorias();
-            cbxCategoria.ValueMember = "Id";
             cbxCategoria.DisplayMember = "Descripcion";
+            cbxCategoria.ValueMember = "Id";
+            cbxCategoria.DataSource = categoriaNegocio.listarCategorias();
             cbxCategoria.SelectedIndex = -1;
+            cbxMarca.SelectedIndex = -1;
         }
 
         private void txtUrlImagen_Leave(object sender, EventArgs e)

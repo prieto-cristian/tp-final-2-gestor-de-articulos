@@ -43,6 +43,7 @@ namespace presentacion
         {
             // Cargar Marcas
             CargarMarcas();
+            CargarCategorias();
         }
         private void CargarMarcas()
         {
@@ -51,6 +52,15 @@ namespace presentacion
             cbxMarca.ValueMember = "Id";
             cbxMarca.DisplayMember = "Descripcion";
             cbxMarca.SelectedIndex = -1;
+        }
+
+        private void CargarCategorias()
+        {
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            cbxCategoria.DataSource = categoriaNegocio.listarCategorias();
+            cbxCategoria.ValueMember = "Id";
+            cbxCategoria.DisplayMember = "Descripcion";
+            cbxCategoria.SelectedIndex = -1;
         }
     }
 }

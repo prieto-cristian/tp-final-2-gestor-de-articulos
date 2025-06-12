@@ -43,11 +43,11 @@
             this.lblCantidadArticulos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblCantidadArticulos.AutoSize = true;
             this.lblCantidadArticulos.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadArticulos.Location = new System.Drawing.Point(170, 271);
+            this.lblCantidadArticulos.Location = new System.Drawing.Point(201, 282);
             this.lblCantidadArticulos.Name = "lblCantidadArticulos";
-            this.lblCantidadArticulos.Size = new System.Drawing.Size(287, 17);
+            this.lblCantidadArticulos.Size = new System.Drawing.Size(206, 17);
             this.lblCantidadArticulos.TabIndex = 0;
-            this.lblCantidadArticulos.Text = "Cantidad de artículos distintos en inventario:";
+            this.lblCantidadArticulos.Text = "Cantidad de Articulos Cargados:";
             // 
             // lblArticuloMasCaro
             // 
@@ -76,7 +76,7 @@
             this.lblMarcaConMasArticulos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMarcaConMasArticulos.AutoSize = true;
             this.lblMarcaConMasArticulos.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarcaConMasArticulos.Location = new System.Drawing.Point(750, 261);
+            this.lblMarcaConMasArticulos.Location = new System.Drawing.Point(821, 282);
             this.lblMarcaConMasArticulos.Name = "lblMarcaConMasArticulos";
             this.lblMarcaConMasArticulos.Size = new System.Drawing.Size(161, 17);
             this.lblMarcaConMasArticulos.TabIndex = 3;
@@ -87,18 +87,18 @@
             this.lblNumeroArticulos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNumeroArticulos.AutoSize = true;
             this.lblNumeroArticulos.Font = new System.Drawing.Font("Nirmala UI", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroArticulos.Location = new System.Drawing.Point(247, 311);
+            this.lblNumeroArticulos.Location = new System.Drawing.Point(272, 322);
             this.lblNumeroArticulos.Name = "lblNumeroArticulos";
-            this.lblNumeroArticulos.Size = new System.Drawing.Size(103, 71);
+            this.lblNumeroArticulos.Size = new System.Drawing.Size(51, 71);
             this.lblNumeroArticulos.TabIndex = 4;
-            this.lblNumeroArticulos.Text = "$ 0";
+            this.lblNumeroArticulos.Text = "-";
             // 
             // lblNumeroArticulosDeUnaMarca
             // 
             this.lblNumeroArticulosDeUnaMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNumeroArticulosDeUnaMarca.AutoSize = true;
             this.lblNumeroArticulosDeUnaMarca.Font = new System.Drawing.Font("Nirmala UI", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroArticulosDeUnaMarca.Location = new System.Drawing.Point(769, 311);
+            this.lblNumeroArticulosDeUnaMarca.Location = new System.Drawing.Point(873, 322);
             this.lblNumeroArticulosDeUnaMarca.Name = "lblNumeroArticulosDeUnaMarca";
             this.lblNumeroArticulosDeUnaMarca.Size = new System.Drawing.Size(51, 71);
             this.lblNumeroArticulosDeUnaMarca.TabIndex = 5;

@@ -200,5 +200,25 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public int ContarArticulos()
+        {
+            string consultaSQL = "Select COUNT(*) Cantidad from ARTICULOS";
+            try
+            {
+                datos.setearConsulta(consultaSQL);
+                datos.ejecutarAccion();
+                int resultado = 0;
+                while (datos.Lector.Read()) { 
+                    resultado = (int)datos.Lector["Cantidad"];
+                }
+                return resultado;
+            }
+            catch(Exception ex) { throw ex; }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

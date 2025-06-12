@@ -28,6 +28,9 @@ namespace presentacion
 
             tpArticuloMasBarato.asignarArticulo(articuloMasBarato);
             tpArticuloMasCaro.asignarArticulo(articuloMasCaro);
+
+            // Mostrar la cantidad de articulos que hay guardados en base de datos
+            lblNumeroArticulos.Text = negocio.ContarArticulos().ToString();
         }
     }
 }

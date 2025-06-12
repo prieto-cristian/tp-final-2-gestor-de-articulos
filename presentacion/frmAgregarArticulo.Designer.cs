@@ -189,6 +189,7 @@
             this.txtUrlImagen.Name = "txtUrlImagen";
             this.txtUrlImagen.Size = new System.Drawing.Size(168, 20);
             this.txtUrlImagen.TabIndex = 14;
+            this.txtUrlImagen.Leave += new System.EventHandler(this.txtUrlImagen_Leave);
             // 
             // cbxMarca
             // 

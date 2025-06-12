@@ -28,6 +28,8 @@ namespace presentacion
             txtNombre.Text = unArticulo.Nombre;
             txtPrecio.Text = unArticulo.Precio.ToString();
             txtUrlImagen.Text = unArticulo.UrlImagen;
+
+            CargarImagen(unArticulo.UrlImagen);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -61,6 +63,23 @@ namespace presentacion
             cbxCategoria.ValueMember = "Id";
             cbxCategoria.DisplayMember = "Descripcion";
             cbxCategoria.SelectedIndex = -1;
+        }
+
+        private void txtUrlImagen_Leave(object sender, EventArgs e)
+        {
+            CargarImagen(txtUrlImagen.Text);
+        }
+
+        private void CargarImagen(string url)
+        {
+            try
+            {
+                pbxImagen.Load(url);
+            }
+            catch (Exception ex)
+            {
+                pbxImagen.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW1WFWLAdUk4Uf4vzvwezXvAFnh6eCjY5oHw&s");
+            }
         }
     }
 }

@@ -31,6 +31,10 @@ namespace presentacion
 
             // Mostrar la cantidad de articulos que hay guardados en base de datos
             lblNumeroArticulos.Text = negocio.ContarArticulos().ToString();
+
+            // Muestre la marca con mas articulos en la base de datos
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            lblNumeroArticulosDeUnaMarca.Text = marcaNegocio.MarcaConMasArticulos();
         }
     }
 }

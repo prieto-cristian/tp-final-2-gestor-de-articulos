@@ -36,5 +36,26 @@ namespace negocio
             catch (Exception ex) { throw ex; }
             finally { datos.cerrarConexion(); }
         }
+
+        public string MarcaConMasArticulos()
+        {
+            string consultaSQL = "SELECT TOP 1 M.Descripcion FROM MARCAS M JOIN ARTICULOS A ON M.Id = A.idMarca GROUP BY M.Id, M.Descripcion ORDER BY COUNT(*) DESC;";
+            try
+            {
+                datos.setearConsulta(consultaSQL);
+                datos.ejecutarAccion();
+                string resultado = "";
+                while (datos.Lector.Read())
+                {
+                    resultado = (string)datos.Lector["Descripcion"];
+                }
+                return resultado;
+            }
+            catch (Exception ex) { throw ex; }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

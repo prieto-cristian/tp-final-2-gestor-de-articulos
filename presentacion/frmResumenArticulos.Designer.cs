@@ -98,7 +98,7 @@
             this.lblNumeroArticulosDeUnaMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNumeroArticulosDeUnaMarca.AutoSize = true;
             this.lblNumeroArticulosDeUnaMarca.Font = new System.Drawing.Font("Nirmala UI", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroArticulosDeUnaMarca.Location = new System.Drawing.Point(873, 322);
+            this.lblNumeroArticulosDeUnaMarca.Location = new System.Drawing.Point(812, 322);
             this.lblNumeroArticulosDeUnaMarca.Name = "lblNumeroArticulosDeUnaMarca";
             this.lblNumeroArticulosDeUnaMarca.Size = new System.Drawing.Size(51, 71);
             this.lblNumeroArticulosDeUnaMarca.TabIndex = 5;

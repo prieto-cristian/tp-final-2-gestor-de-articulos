@@ -45,6 +45,7 @@ namespace presentacion
         private void frmListadoArticulos_Load(object sender, EventArgs e)
         {
             ListarArticulos();
+            CargarFiltros();
         }
 
         private void ListarArticulos()
@@ -73,6 +74,41 @@ namespace presentacion
         private void LimpiarArticulos()
         {
             flpListadoProductos.Controls.Clear();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            panelBusqueda.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void panel3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            panelBusqueda.BorderStyle = BorderStyle.None;
+        }
+
+        private void CargarFiltros()
+        {
+            // Cargar el combo box que indica el orden por precios
+            cbxOrden.Items.AddRange(new object[] { "Menor precio", "Mayor precio"});
+            cbxOrden.SelectedIndex = 0;
         }
     }
 }

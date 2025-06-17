@@ -28,42 +28,112 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panelBarraSuperior = new System.Windows.Forms.Panel();
+            this.cbxOrden = new System.Windows.Forms.ComboBox();
+            this.lblOrden = new System.Windows.Forms.Label();
+            this.panelBusqueda = new System.Windows.Forms.Panel();
+            this.txtBuscador = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.btnAgregarArticulo = new System.Windows.Forms.Button();
             this.flpListadoProductos = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblFiltroAvanzadoCriterio = new System.Windows.Forms.Label();
-            this.lblFiltroAvanzadoCampo = new System.Windows.Forms.Label();
-            this.cbxFiltroAvanzadoCriterio = new System.Windows.Forms.ComboBox();
-            this.cbxFiltroAvanzadoCampo = new System.Windows.Forms.ComboBox();
-            this.txtFiltroAvanzado = new System.Windows.Forms.TextBox();
-            this.btnFiltroAvanzado = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblFiltroAvanzado = new System.Windows.Forms.Label();
-            this.lblNombreFiltroAvanzado = new System.Windows.Forms.Label();
-            this.lblNombreFiltro = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panelFiltroAvanzado = new System.Windows.Forms.Panel();
+            this.txtMaximo = new System.Windows.Forms.TextBox();
+            this.txtMinimo = new System.Windows.Forms.TextBox();
+            this.lblProductosConPrecioAlto = new System.Windows.Forms.Label();
+            this.lblProductosConPrecioMedio = new System.Windows.Forms.Label();
+            this.lblProductosPrecioBajo = new System.Windows.Forms.Label();
+            this.lblFiltroPrecio = new System.Windows.Forms.Label();
+            this.cbxFiltroCategorias = new System.Windows.Forms.ComboBox();
+            this.lblFiltroCategoria = new System.Windows.Forms.Label();
+            this.cbxFiltroMarcas = new System.Windows.Forms.ComboBox();
+            this.lblFiltroMarcas = new System.Windows.Forms.Label();
+            this.lblMinimo = new System.Windows.Forms.Label();
+            this.lblMaximo = new System.Windows.Forms.Label();
+            this.btnBuscarProductosPorRango = new System.Windows.Forms.Button();
+            this.panelBarraSuperior.SuspendLayout();
+            this.panelBusqueda.SuspendLayout();
+            this.panelFiltroAvanzado.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelBarraSuperior
             // 
-            this.panel1.Controls.Add(this.lblNombreFiltro);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.btnAgregarArticulo);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1091, 100);
-            this.panel1.TabIndex = 4;
+            this.panelBarraSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
+            this.panelBarraSuperior.Controls.Add(this.cbxOrden);
+            this.panelBarraSuperior.Controls.Add(this.lblOrden);
+            this.panelBarraSuperior.Controls.Add(this.panelBusqueda);
+            this.panelBarraSuperior.Controls.Add(this.btnAgregarArticulo);
+            this.panelBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelBarraSuperior.Location = new System.Drawing.Point(0, 0);
+            this.panelBarraSuperior.Name = "panelBarraSuperior";
+            this.panelBarraSuperior.Size = new System.Drawing.Size(1091, 100);
+            this.panelBarraSuperior.TabIndex = 4;
             // 
-            // textBox1
+            // cbxOrden
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.Location = new System.Drawing.Point(332, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(315, 20);
-            this.textBox1.TabIndex = 1;
+            this.cbxOrden.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbxOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
+            this.cbxOrden.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxOrden.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxOrden.FormattingEnabled = true;
+            this.cbxOrden.Location = new System.Drawing.Point(888, 40);
+            this.cbxOrden.Name = "cbxOrden";
+            this.cbxOrden.Size = new System.Drawing.Size(121, 25);
+            this.cbxOrden.TabIndex = 5;
+            // 
+            // lblOrden
+            // 
+            this.lblOrden.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblOrden.AutoSize = true;
+            this.lblOrden.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrden.Location = new System.Drawing.Point(789, 43);
+            this.lblOrden.Name = "lblOrden";
+            this.lblOrden.Size = new System.Drawing.Size(93, 19);
+            this.lblOrden.TabIndex = 4;
+            this.lblOrden.Text = "Ordenar por";
+            // 
+            // panelBusqueda
+            // 
+            this.panelBusqueda.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelBusqueda.BackColor = System.Drawing.Color.LemonChiffon;
+            this.panelBusqueda.Controls.Add(this.txtBuscador);
+            this.panelBusqueda.Controls.Add(this.btnBuscar);
+            this.panelBusqueda.Location = new System.Drawing.Point(314, 32);
+            this.panelBusqueda.Name = "panelBusqueda";
+            this.panelBusqueda.Size = new System.Drawing.Size(454, 40);
+            this.panelBusqueda.TabIndex = 3;
+            this.panelBusqueda.Click += new System.EventHandler(this.panel3_Click);
+            // 
+            // txtBuscador
+            // 
+            this.txtBuscador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBuscador.BackColor = System.Drawing.Color.LemonChiffon;
+            this.txtBuscador.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBuscador.Font = new System.Drawing.Font("Nirmala UI", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscador.Location = new System.Drawing.Point(0, 0);
+            this.txtBuscador.Name = "txtBuscador";
+            this.txtBuscador.Size = new System.Drawing.Size(411, 38);
+            this.txtBuscador.TabIndex = 1;
+            this.txtBuscador.Tag = "";
+            this.txtBuscador.Click += new System.EventHandler(this.textBox1_Click);
+            this.txtBuscador.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtBuscador.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.txtBuscador.Leave += new System.EventHandler(this.textBox1_Leave);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBuscar.BackColor = System.Drawing.Color.LemonChiffon;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Image = global::presentacion.Properties.Resources.busqueda;
+            this.btnBuscar.Location = new System.Drawing.Point(411, 0);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(43, 40);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnAgregarArticulo
             // 
@@ -81,125 +151,161 @@
             // 
             // flpListadoProductos
             // 
+            this.flpListadoProductos.BackColor = System.Drawing.Color.White;
             this.flpListadoProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpListadoProductos.Location = new System.Drawing.Point(0, 100);
             this.flpListadoProductos.Name = "flpListadoProductos";
-            this.flpListadoProductos.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.flpListadoProductos.Size = new System.Drawing.Size(1091, 307);
+            this.flpListadoProductos.Padding = new System.Windows.Forms.Padding(30, 60, 0, 0);
+            this.flpListadoProductos.Size = new System.Drawing.Size(701, 445);
             this.flpListadoProductos.TabIndex = 5;
             // 
-            // lblFiltroAvanzadoCriterio
+            // panelFiltroAvanzado
             // 
-            this.lblFiltroAvanzadoCriterio.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblFiltroAvanzadoCriterio.AutoSize = true;
-            this.lblFiltroAvanzadoCriterio.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroAvanzadoCriterio.Location = new System.Drawing.Point(363, 63);
-            this.lblFiltroAvanzadoCriterio.Name = "lblFiltroAvanzadoCriterio";
-            this.lblFiltroAvanzadoCriterio.Size = new System.Drawing.Size(58, 17);
-            this.lblFiltroAvanzadoCriterio.TabIndex = 4;
-            this.lblFiltroAvanzadoCriterio.Text = "Criterio: ";
+            this.panelFiltroAvanzado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
+            this.panelFiltroAvanzado.Controls.Add(this.btnBuscarProductosPorRango);
+            this.panelFiltroAvanzado.Controls.Add(this.lblMaximo);
+            this.panelFiltroAvanzado.Controls.Add(this.lblMinimo);
+            this.panelFiltroAvanzado.Controls.Add(this.txtMaximo);
+            this.panelFiltroAvanzado.Controls.Add(this.txtMinimo);
+            this.panelFiltroAvanzado.Controls.Add(this.lblProductosConPrecioAlto);
+            this.panelFiltroAvanzado.Controls.Add(this.lblProductosConPrecioMedio);
+            this.panelFiltroAvanzado.Controls.Add(this.lblProductosPrecioBajo);
+            this.panelFiltroAvanzado.Controls.Add(this.lblFiltroPrecio);
+            this.panelFiltroAvanzado.Controls.Add(this.cbxFiltroCategorias);
+            this.panelFiltroAvanzado.Controls.Add(this.lblFiltroCategoria);
+            this.panelFiltroAvanzado.Controls.Add(this.cbxFiltroMarcas);
+            this.panelFiltroAvanzado.Controls.Add(this.lblFiltroMarcas);
+            this.panelFiltroAvanzado.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelFiltroAvanzado.Location = new System.Drawing.Point(701, 100);
+            this.panelFiltroAvanzado.Name = "panelFiltroAvanzado";
+            this.panelFiltroAvanzado.Size = new System.Drawing.Size(390, 445);
+            this.panelFiltroAvanzado.TabIndex = 6;
             // 
-            // lblFiltroAvanzadoCampo
+            // txtMaximo
             // 
-            this.lblFiltroAvanzadoCampo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblFiltroAvanzadoCampo.AutoSize = true;
-            this.lblFiltroAvanzadoCampo.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroAvanzadoCampo.Location = new System.Drawing.Point(177, 63);
-            this.lblFiltroAvanzadoCampo.Name = "lblFiltroAvanzadoCampo";
-            this.lblFiltroAvanzadoCampo.Size = new System.Drawing.Size(53, 17);
-            this.lblFiltroAvanzadoCampo.TabIndex = 3;
-            this.lblFiltroAvanzadoCampo.Text = "Campo:";
+            this.txtMaximo.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaximo.Location = new System.Drawing.Point(193, 372);
+            this.txtMaximo.Name = "txtMaximo";
+            this.txtMaximo.Size = new System.Drawing.Size(100, 25);
+            this.txtMaximo.TabIndex = 9;
             // 
-            // cbxFiltroAvanzadoCriterio
+            // txtMinimo
             // 
-            this.cbxFiltroAvanzadoCriterio.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbxFiltroAvanzadoCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxFiltroAvanzadoCriterio.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxFiltroAvanzadoCriterio.FormattingEnabled = true;
-            this.cbxFiltroAvanzadoCriterio.Location = new System.Drawing.Point(427, 55);
-            this.cbxFiltroAvanzadoCriterio.Name = "cbxFiltroAvanzadoCriterio";
-            this.cbxFiltroAvanzadoCriterio.Size = new System.Drawing.Size(121, 25);
-            this.cbxFiltroAvanzadoCriterio.TabIndex = 2;
+            this.txtMinimo.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMinimo.Location = new System.Drawing.Point(54, 372);
+            this.txtMinimo.Name = "txtMinimo";
+            this.txtMinimo.Size = new System.Drawing.Size(100, 25);
+            this.txtMinimo.TabIndex = 8;
             // 
-            // cbxFiltroAvanzadoCampo
+            // lblProductosConPrecioAlto
             // 
-            this.cbxFiltroAvanzadoCampo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbxFiltroAvanzadoCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxFiltroAvanzadoCampo.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxFiltroAvanzadoCampo.FormattingEnabled = true;
-            this.cbxFiltroAvanzadoCampo.Location = new System.Drawing.Point(236, 55);
-            this.cbxFiltroAvanzadoCampo.Name = "cbxFiltroAvanzadoCampo";
-            this.cbxFiltroAvanzadoCampo.Size = new System.Drawing.Size(121, 25);
-            this.cbxFiltroAvanzadoCampo.TabIndex = 1;
+            this.lblProductosConPrecioAlto.AutoSize = true;
+            this.lblProductosConPrecioAlto.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductosConPrecioAlto.Location = new System.Drawing.Point(21, 319);
+            this.lblProductosConPrecioAlto.Name = "lblProductosConPrecioAlto";
+            this.lblProductosConPrecioAlto.Size = new System.Drawing.Size(70, 19);
+            this.lblProductosConPrecioAlto.TabIndex = 7;
+            this.lblProductosConPrecioAlto.Text = "Más de $ ";
             // 
-            // txtFiltroAvanzado
+            // lblProductosConPrecioMedio
             // 
-            this.txtFiltroAvanzado.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtFiltroAvanzado.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFiltroAvanzado.Location = new System.Drawing.Point(600, 55);
-            this.txtFiltroAvanzado.Name = "txtFiltroAvanzado";
-            this.txtFiltroAvanzado.Size = new System.Drawing.Size(167, 25);
-            this.txtFiltroAvanzado.TabIndex = 0;
+            this.lblProductosConPrecioMedio.AutoSize = true;
+            this.lblProductosConPrecioMedio.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductosConPrecioMedio.Location = new System.Drawing.Point(22, 287);
+            this.lblProductosConPrecioMedio.Name = "lblProductosConPrecioMedio";
+            this.lblProductosConPrecioMedio.Size = new System.Drawing.Size(189, 19);
+            this.lblProductosConPrecioMedio.TabIndex = 6;
+            this.lblProductosConPrecioMedio.Text = "$ {precioBajo} a $ {precioAlto}";
             // 
-            // btnFiltroAvanzado
+            // lblProductosPrecioBajo
             // 
-            this.btnFiltroAvanzado.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnFiltroAvanzado.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltroAvanzado.Location = new System.Drawing.Point(796, 49);
-            this.btnFiltroAvanzado.Name = "btnFiltroAvanzado";
-            this.btnFiltroAvanzado.Size = new System.Drawing.Size(99, 34);
-            this.btnFiltroAvanzado.TabIndex = 5;
-            this.btnFiltroAvanzado.Text = "Buscar";
-            this.btnFiltroAvanzado.UseVisualStyleBackColor = true;
+            this.lblProductosPrecioBajo.AutoSize = true;
+            this.lblProductosPrecioBajo.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProductosPrecioBajo.Location = new System.Drawing.Point(22, 251);
+            this.lblProductosPrecioBajo.Name = "lblProductosPrecioBajo";
+            this.lblProductosPrecioBajo.Size = new System.Drawing.Size(60, 19);
+            this.lblProductosPrecioBajo.TabIndex = 5;
+            this.lblProductosPrecioBajo.Text = "Hasta $ ";
             // 
-            // panel2
+            // lblFiltroPrecio
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel2.Controls.Add(this.lblNombreFiltroAvanzado);
-            this.panel2.Controls.Add(this.lblFiltroAvanzado);
-            this.panel2.Controls.Add(this.btnFiltroAvanzado);
-            this.panel2.Controls.Add(this.lblFiltroAvanzadoCriterio);
-            this.panel2.Controls.Add(this.lblFiltroAvanzadoCampo);
-            this.panel2.Controls.Add(this.cbxFiltroAvanzadoCriterio);
-            this.panel2.Controls.Add(this.cbxFiltroAvanzadoCampo);
-            this.panel2.Controls.Add(this.txtFiltroAvanzado);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 407);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1091, 138);
-            this.panel2.TabIndex = 6;
+            this.lblFiltroPrecio.AutoSize = true;
+            this.lblFiltroPrecio.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltroPrecio.Location = new System.Drawing.Point(22, 221);
+            this.lblFiltroPrecio.Name = "lblFiltroPrecio";
+            this.lblFiltroPrecio.Size = new System.Drawing.Size(52, 19);
+            this.lblFiltroPrecio.TabIndex = 4;
+            this.lblFiltroPrecio.Text = "Precio";
             // 
-            // lblFiltroAvanzado
+            // cbxFiltroCategorias
             // 
-            this.lblFiltroAvanzado.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblFiltroAvanzado.AutoSize = true;
-            this.lblFiltroAvanzado.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFiltroAvanzado.Location = new System.Drawing.Point(554, 63);
-            this.lblFiltroAvanzado.Name = "lblFiltroAvanzado";
-            this.lblFiltroAvanzado.Size = new System.Drawing.Size(40, 17);
-            this.lblFiltroAvanzado.TabIndex = 6;
-            this.lblFiltroAvanzado.Text = "Filtro:";
+            this.cbxFiltroCategorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxFiltroCategorias.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxFiltroCategorias.FormattingEnabled = true;
+            this.cbxFiltroCategorias.Location = new System.Drawing.Point(25, 170);
+            this.cbxFiltroCategorias.Name = "cbxFiltroCategorias";
+            this.cbxFiltroCategorias.Size = new System.Drawing.Size(121, 25);
+            this.cbxFiltroCategorias.TabIndex = 3;
             // 
-            // lblNombreFiltroAvanzado
+            // lblFiltroCategoria
             // 
-            this.lblNombreFiltroAvanzado.AutoSize = true;
-            this.lblNombreFiltroAvanzado.Font = new System.Drawing.Font("Nirmala UI", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreFiltroAvanzado.Location = new System.Drawing.Point(13, 7);
-            this.lblNombreFiltroAvanzado.Name = "lblNombreFiltroAvanzado";
-            this.lblNombreFiltroAvanzado.Size = new System.Drawing.Size(168, 30);
-            this.lblNombreFiltroAvanzado.TabIndex = 7;
-            this.lblNombreFiltroAvanzado.Text = "Filtro Avanzado";
+            this.lblFiltroCategoria.AutoSize = true;
+            this.lblFiltroCategoria.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltroCategoria.Location = new System.Drawing.Point(25, 139);
+            this.lblFiltroCategoria.Name = "lblFiltroCategoria";
+            this.lblFiltroCategoria.Size = new System.Drawing.Size(75, 19);
+            this.lblFiltroCategoria.TabIndex = 2;
+            this.lblFiltroCategoria.Text = "Categoría";
             // 
-            // lblNombreFiltro
+            // cbxFiltroMarcas
             // 
-            this.lblNombreFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblNombreFiltro.AutoSize = true;
-            this.lblNombreFiltro.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreFiltro.Location = new System.Drawing.Point(291, 45);
-            this.lblNombreFiltro.Name = "lblNombreFiltro";
-            this.lblNombreFiltro.Size = new System.Drawing.Size(40, 17);
-            this.lblNombreFiltro.TabIndex = 2;
-            this.lblNombreFiltro.Text = "Filtro:";
+            this.cbxFiltroMarcas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxFiltroMarcas.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxFiltroMarcas.FormattingEnabled = true;
+            this.cbxFiltroMarcas.Location = new System.Drawing.Point(25, 78);
+            this.cbxFiltroMarcas.Name = "cbxFiltroMarcas";
+            this.cbxFiltroMarcas.Size = new System.Drawing.Size(121, 25);
+            this.cbxFiltroMarcas.TabIndex = 1;
+            // 
+            // lblFiltroMarcas
+            // 
+            this.lblFiltroMarcas.AutoSize = true;
+            this.lblFiltroMarcas.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltroMarcas.Location = new System.Drawing.Point(25, 50);
+            this.lblFiltroMarcas.Name = "lblFiltroMarcas";
+            this.lblFiltroMarcas.Size = new System.Drawing.Size(51, 19);
+            this.lblFiltroMarcas.TabIndex = 0;
+            this.lblFiltroMarcas.Text = "Marca";
+            // 
+            // lblMinimo
+            // 
+            this.lblMinimo.AutoSize = true;
+            this.lblMinimo.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMinimo.Location = new System.Drawing.Point(24, 375);
+            this.lblMinimo.Name = "lblMinimo";
+            this.lblMinimo.Size = new System.Drawing.Size(33, 19);
+            this.lblMinimo.TabIndex = 10;
+            this.lblMinimo.Text = "Min";
+            // 
+            // lblMaximo
+            // 
+            this.lblMaximo.AutoSize = true;
+            this.lblMaximo.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaximo.Location = new System.Drawing.Point(160, 375);
+            this.lblMaximo.Name = "lblMaximo";
+            this.lblMaximo.Size = new System.Drawing.Size(35, 19);
+            this.lblMaximo.TabIndex = 11;
+            this.lblMaximo.Text = "Max";
+            // 
+            // btnBuscarProductosPorRango
+            // 
+            this.btnBuscarProductosPorRango.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarProductosPorRango.Location = new System.Drawing.Point(299, 372);
+            this.btnBuscarProductosPorRango.Name = "btnBuscarProductosPorRango";
+            this.btnBuscarProductosPorRango.Size = new System.Drawing.Size(32, 28);
+            this.btnBuscarProductosPorRango.TabIndex = 12;
+            this.btnBuscarProductosPorRango.Text = ">";
+            this.btnBuscarProductosPorRango.UseVisualStyleBackColor = true;
             // 
             // frmListadoArticulos
             // 
@@ -210,8 +316,8 @@
             this.ClientSize = new System.Drawing.Size(1091, 545);
             this.ControlBox = false;
             this.Controls.Add(this.flpListadoProductos);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelFiltroAvanzado);
+            this.Controls.Add(this.panelBarraSuperior);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -221,28 +327,38 @@
             this.Text = "Listado de Articulos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmListadoArticulos_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panelBarraSuperior.ResumeLayout(false);
+            this.panelBarraSuperior.PerformLayout();
+            this.panelBusqueda.ResumeLayout(false);
+            this.panelBusqueda.PerformLayout();
+            this.panelFiltroAvanzado.ResumeLayout(false);
+            this.panelFiltroAvanzado.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelBarraSuperior;
         private System.Windows.Forms.FlowLayoutPanel flpListadoProductos;
         private System.Windows.Forms.Button btnAgregarArticulo;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label lblFiltroAvanzadoCriterio;
-        private System.Windows.Forms.Label lblFiltroAvanzadoCampo;
-        private System.Windows.Forms.ComboBox cbxFiltroAvanzadoCriterio;
-        private System.Windows.Forms.ComboBox cbxFiltroAvanzadoCampo;
-        private System.Windows.Forms.TextBox txtFiltroAvanzado;
-        private System.Windows.Forms.Button btnFiltroAvanzado;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblFiltroAvanzado;
-        private System.Windows.Forms.Label lblNombreFiltroAvanzado;
-        private System.Windows.Forms.Label lblNombreFiltro;
+        private System.Windows.Forms.Panel panelFiltroAvanzado;
+        private System.Windows.Forms.TextBox txtBuscador;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Panel panelBusqueda;
+        private System.Windows.Forms.ComboBox cbxOrden;
+        private System.Windows.Forms.Label lblOrden;
+        private System.Windows.Forms.Label lblFiltroMarcas;
+        private System.Windows.Forms.ComboBox cbxFiltroMarcas;
+        private System.Windows.Forms.Label lblFiltroCategoria;
+        private System.Windows.Forms.Label lblFiltroPrecio;
+        private System.Windows.Forms.ComboBox cbxFiltroCategorias;
+        private System.Windows.Forms.TextBox txtMaximo;
+        private System.Windows.Forms.TextBox txtMinimo;
+        private System.Windows.Forms.Label lblProductosConPrecioAlto;
+        private System.Windows.Forms.Label lblProductosConPrecioMedio;
+        private System.Windows.Forms.Label lblProductosPrecioBajo;
+        private System.Windows.Forms.Button btnBuscarProductosPorRango;
+        private System.Windows.Forms.Label lblMaximo;
+        private System.Windows.Forms.Label lblMinimo;
     }
 }

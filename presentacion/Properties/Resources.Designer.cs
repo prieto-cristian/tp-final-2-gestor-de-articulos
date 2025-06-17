@@ -63,6 +63,16 @@ namespace presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap busqueda {
+            get {
+                object obj = ResourceManager.GetObject("busqueda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap carrito_white {
             get {
                 object obj = ResourceManager.GetObject("carrito-white", resourceCulture);
@@ -96,6 +106,16 @@ namespace presentacion.Properties {
         internal static System.Drawing.Bitmap libro_abierto_white {
             get {
                 object obj = ResourceManager.GetObject("libro-abierto-white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lupa_black {
+            get {
+                object obj = ResourceManager.GetObject("lupa-black", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

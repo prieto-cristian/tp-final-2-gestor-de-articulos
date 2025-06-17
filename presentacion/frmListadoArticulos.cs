@@ -120,6 +120,22 @@ namespace presentacion
             // Cargar el combo box que indica el orden por precios
             cbxOrden.Items.AddRange(new object[] { "Menor precio", "Mayor precio"});
             cbxOrden.SelectedIndex = 0;
+
+            // Cargue las marcas y categorias de la base de datos al combo box
+            MarcaNegocio negocioMarca = new MarcaNegocio();
+            CategoriaNegocio negocioCategoria = new CategoriaNegocio();
+
+            List<Marca> listadoMarcas = negocioMarca.listarMarcas();
+            List<Categoria> listadoCategorias = negocioCategoria.listarCategorias();
+
+            foreach (Marca m in listadoMarcas) { 
+                cbxFiltroMarcas.Items.Add(m.Descripcion);
+            }
+            foreach (Categoria c in listadoCategorias)
+            {
+                cbxFiltroCategorias.Items.Add(c.Descripcion);
+            }
+
         }
 
         private void cbxOrden_SelectedIndexChanged(object sender, EventArgs e)

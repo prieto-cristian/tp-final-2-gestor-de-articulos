@@ -15,9 +15,11 @@ namespace negocio
         {
             this.datos = new AccesoADatos();
         }
-        public List<Articulo> listarArticulos()
+        public List<Articulo> listarArticulos(FiltroArticulo filtroActivo)
         {
-            string consultaSQL = "select A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id idMarca, M.Descripcion descripcionMarca, C.Id idCategoria, C.Descripcion descripcionCategorias From ARTICULOS A, MARCAS M, CATEGORIAS C WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id";
+            string consultaSQL = "SELECT A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id AS idMarca, M.Descripcion AS descripcionMarca, C.Id AS idCategoria, C.Descripcion AS descripcionCategorias FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id ORDER BY A.Precio ";
+            consultaSQL += filtroActivo.OrdenarPor;
+            
             List<Articulo> articulos = new List<Articulo>();
             try
             {

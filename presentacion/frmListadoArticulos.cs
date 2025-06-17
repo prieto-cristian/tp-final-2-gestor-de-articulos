@@ -14,6 +14,7 @@ namespace presentacion
 {
     public partial class frmListadoArticulos : Form
     {
+        FiltroArticulo filtroArticulo = null;
         private ArticuloNegocio NegocioArticulo = null;
         List<Articulo> articulos = null;
         public frmListadoArticulos()
@@ -44,13 +45,23 @@ namespace presentacion
 
         private void frmListadoArticulos_Load(object sender, EventArgs e)
         {
-            ListarArticulos();
+            // Se desuscribe al combo box de SelectedChanged para que no liste los articulos
+            // al momento de mostrar la ventana. Se vuelve a suscribir una vez Cargados los
+            // filtros
+            cbxOrden.SelectedValueChanged -= cbxOrden_SelectedValueChanged;
             CargarFiltros();
+            cbxOrden.SelectedValueChanged += cbxOrden_SelectedValueChanged;
+
+            // Lista los articulos
+            ListarArticulos();
         }
 
         private void ListarArticulos()
         {
-            articulos = NegocioArticulo.listarArticulos();
+            if (filtroArticulo == null) {
+                filtroArticulo = new FiltroArticulo();
+            }
+            articulos = NegocioArticulo.listarArticulos(filtroArticulo);
 
             foreach (Articulo articulo in articulos)
             {
@@ -109,6 +120,27 @@ namespace presentacion
             // Cargar el combo box que indica el orden por precios
             cbxOrden.Items.AddRange(new object[] { "Menor precio", "Mayor precio"});
             cbxOrden.SelectedIndex = 0;
+        }
+
+        private void cbxOrden_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbxOrden_SelectedValueChanged(object sender, EventArgs e)
+        {
+            filtroArticulo = new FiltroArticulo();
+            if (cbxOrden.Text == "Mayor precio")
+            {
+                filtroArticulo.OrdenarPor = "DESC";
+            }
+            LimpiarArticulos();
+            ListarArticulos();
+        }
+
+        private void cbxOrden_Leave(object sender, EventArgs e)
+        {
+            
         }
     }
 }

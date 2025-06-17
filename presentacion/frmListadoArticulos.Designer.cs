@@ -279,6 +279,7 @@
             this.cbxFiltroCategorias.Name = "cbxFiltroCategorias";
             this.cbxFiltroCategorias.Size = new System.Drawing.Size(121, 25);
             this.cbxFiltroCategorias.TabIndex = 3;
+            this.cbxFiltroCategorias.SelectedValueChanged += new System.EventHandler(this.cbxFiltroCategorias_SelectedValueChanged);
             // 
             // lblFiltroCategoria
             // 

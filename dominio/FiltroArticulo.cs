@@ -10,6 +10,7 @@ namespace dominio
     {
         public string OrdenarPor { get; set; } = "ASC";
         public int? IdCategoria { get; set; }
-        public Marca marcaAFiltrar { get; set; } = null;
+        public Marca marcaAFiltrar { get; set; }
+        public Categoria categoriaAFiltrar { get; set; }
     }
 }

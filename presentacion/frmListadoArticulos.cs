@@ -58,12 +58,14 @@ namespace presentacion
 
         private void SuscribirseAlSelectedChangeDeLosComboBox()
         {
+            cbxFiltroCategorias.SelectedValueChanged += cbxFiltroCategorias_SelectedValueChanged;
             cbxFiltroMarcas.SelectedValueChanged += cbxFiltroMarcas_SelectedValueChanged;
             cbxOrden.SelectedValueChanged += cbxOrden_SelectedValueChanged;
         }
 
         private void DesuscribirSelectedChangeDeLosComboBox()
         {
+            cbxFiltroCategorias.SelectedValueChanged -= cbxFiltroCategorias_SelectedValueChanged;
             cbxFiltroMarcas.SelectedValueChanged -= cbxFiltroMarcas_SelectedValueChanged;
             cbxOrden.SelectedValueChanged -= cbxOrden_SelectedValueChanged;
         }
@@ -159,10 +161,13 @@ namespace presentacion
 
         private void cbxOrden_SelectedValueChanged(object sender, EventArgs e)
         {
-            filtroArticulo = new FiltroArticulo();
             if (cbxOrden.Text == "Mayor precio")
             {
                 filtroArticulo.OrdenarPor = "DESC";
+            }
+            else
+            {
+                filtroArticulo.OrdenarPor = "ASC";
             }
             LimpiarArticulos();
             ListarArticulos();
@@ -176,6 +181,14 @@ namespace presentacion
         private void cbxFiltroMarcas_SelectedValueChanged(object sender, EventArgs e)
         {
             filtroArticulo.marcaAFiltrar = (Marca)cbxFiltroMarcas.SelectedItem;
+
+            LimpiarArticulos();
+            ListarArticulos();
+        }
+
+        private void cbxFiltroCategorias_SelectedValueChanged(object sender, EventArgs e)
+        {
+            filtroArticulo.categoriaAFiltrar = (Categoria)cbxFiltroCategorias.SelectedItem;
 
             LimpiarArticulos();
             ListarArticulos();

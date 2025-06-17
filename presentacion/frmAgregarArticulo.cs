@@ -95,7 +95,6 @@ namespace presentacion
             cbxCategoria.ValueMember = "Id";
             cbxCategoria.DataSource = categoriaNegocio.listarCategorias();
             cbxCategoria.SelectedIndex = -1;
-            cbxMarca.SelectedIndex = -1;
         }
 
         private void txtUrlImagen_Leave(object sender, EventArgs e)

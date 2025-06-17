@@ -48,12 +48,24 @@ namespace presentacion
             // Se desuscribe al combo box de SelectedChanged para que no liste los articulos
             // al momento de mostrar la ventana. Se vuelve a suscribir una vez Cargados los
             // filtros
-            cbxOrden.SelectedValueChanged -= cbxOrden_SelectedValueChanged;
+            DesuscribirSelectedChangeDeLosComboBox();
             CargarFiltros();
-            cbxOrden.SelectedValueChanged += cbxOrden_SelectedValueChanged;
+            SuscribirseAlSelectedChangeDeLosComboBox();
 
             // Lista los articulos
             ListarArticulos();
+        }
+
+        private void SuscribirseAlSelectedChangeDeLosComboBox()
+        {
+            cbxFiltroMarcas.SelectedValueChanged += cbxFiltroMarcas_SelectedValueChanged;
+            cbxOrden.SelectedValueChanged += cbxOrden_SelectedValueChanged;
+        }
+
+        private void DesuscribirSelectedChangeDeLosComboBox()
+        {
+            cbxFiltroMarcas.SelectedValueChanged -= cbxFiltroMarcas_SelectedValueChanged;
+            cbxOrden.SelectedValueChanged -= cbxOrden_SelectedValueChanged;
         }
 
         private void ListarArticulos()
@@ -128,13 +140,15 @@ namespace presentacion
             List<Marca> listadoMarcas = negocioMarca.listarMarcas();
             List<Categoria> listadoCategorias = negocioCategoria.listarCategorias();
 
-            foreach (Marca m in listadoMarcas) { 
-                cbxFiltroMarcas.Items.Add(m.Descripcion);
-            }
-            foreach (Categoria c in listadoCategorias)
-            {
-                cbxFiltroCategorias.Items.Add(c.Descripcion);
-            }
+            cbxFiltroCategorias.DisplayMember = "Descripcion";
+            cbxFiltroCategorias.ValueMember = "Id";
+            cbxFiltroCategorias.DataSource = negocioCategoria.listarCategorias();
+            cbxFiltroCategorias.SelectedIndex = -1;
+
+            cbxFiltroMarcas.DisplayMember = "Descripcion";
+            cbxFiltroMarcas.ValueMember = "Id";
+            cbxFiltroMarcas.DataSource = negocioMarca.listarMarcas();
+            cbxFiltroMarcas.SelectedIndex = -1;
 
         }
 
@@ -157,6 +171,14 @@ namespace presentacion
         private void cbxOrden_Leave(object sender, EventArgs e)
         {
             
+        }
+
+        private void cbxFiltroMarcas_SelectedValueChanged(object sender, EventArgs e)
+        {
+            filtroArticulo.marcaAFiltrar = (Marca)cbxFiltroMarcas.SelectedItem;
+
+            LimpiarArticulos();
+            ListarArticulos();
         }
     }
 }

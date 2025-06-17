@@ -26,6 +26,7 @@ namespace negocio
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consultaSQL;
+            comando.Parameters.Clear();
         }
 
         public void ejecutarAccion()
@@ -64,6 +65,10 @@ namespace negocio
 
         public void parametrizar(string nombreParametro, object valor) { 
             comando.Parameters.AddWithValue(nombreParametro, valor);
+        }
+        public void parametrizar(string nombreParametro)
+        {
+            comando.Parameters.AddWithValue(nombreParametro, DBNull.Value);
         }
     }
 }

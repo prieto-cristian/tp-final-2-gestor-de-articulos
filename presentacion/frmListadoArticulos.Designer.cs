@@ -299,6 +299,7 @@
             this.cbxFiltroMarcas.Name = "cbxFiltroMarcas";
             this.cbxFiltroMarcas.Size = new System.Drawing.Size(121, 25);
             this.cbxFiltroMarcas.TabIndex = 1;
+            this.cbxFiltroMarcas.SelectedValueChanged += new System.EventHandler(this.cbxFiltroMarcas_SelectedValueChanged);
             // 
             // lblFiltroMarcas
             // 

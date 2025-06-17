@@ -9,5 +9,7 @@ namespace dominio
     public class FiltroArticulo
     {
         public string OrdenarPor { get; set; } = "ASC";
+        public int? IdCategoria { get; set; }
+        public Marca marcaAFiltrar { get; set; } = null;
     }
 }

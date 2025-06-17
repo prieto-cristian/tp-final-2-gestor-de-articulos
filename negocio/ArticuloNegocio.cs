@@ -17,13 +17,21 @@ namespace negocio
         }
         public List<Articulo> listarArticulos(FiltroArticulo filtroActivo)
         {
-            string consultaSQL = "SELECT A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id AS idMarca, M.Descripcion AS descripcionMarca, C.Id AS idCategoria, C.Descripcion AS descripcionCategorias FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id ORDER BY A.Precio ";
+            string consultaSQL = "SELECT A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id AS idMarca, M.Descripcion AS descripcionMarca, C.Id AS idCategoria, C.Descripcion AS descripcionCategorias FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id AND (@IdMarcaAFiltrar IS NULL OR M.Id = @IdMarcaAFiltrar) ORDER BY A.Precio ";
             consultaSQL += filtroActivo.OrdenarPor;
             
             List<Articulo> articulos = new List<Articulo>();
             try
             {
                 datos.setearConsulta(consultaSQL);
+                if(filtroActivo.marcaAFiltrar != null)
+                {
+                    datos.parametrizar("@IdMarcaAFiltrar", filtroActivo.marcaAFiltrar.Id);
+                }
+                else
+                {
+                    datos.parametrizar("@IdMarcaAFiltrar");
+                }
                 datos.ejecutarAccion();
                 while (datos.Lector.Read())
                 {

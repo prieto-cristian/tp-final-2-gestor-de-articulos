@@ -46,6 +46,7 @@
     <Compile Include="FiltroArticulo.cs" />
     <Compile Include="Marca.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RangoPrecios.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

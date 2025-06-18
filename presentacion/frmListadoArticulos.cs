@@ -14,9 +14,13 @@ namespace presentacion
 {
     public partial class frmListadoArticulos : Form
     {
-        FiltroArticulo filtroArticulo = null;
+        FiltroArticulo filtroArticulo = new FiltroArticulo();
         private ArticuloNegocio NegocioArticulo = null;
         List<Articulo> articulos = null;
+        private string TEXTO_HASTA = "Hasta $";
+        private string SIGNO_DOLAR = "$";
+        private string TEXTO_MAS_DE = "Más de $";
+        private string A_MINUSCULA = " a ";
         public frmListadoArticulos()
         {
             InitializeComponent();
@@ -72,9 +76,6 @@ namespace presentacion
 
         private void ListarArticulos()
         {
-            if (filtroArticulo == null) {
-                filtroArticulo = new FiltroArticulo();
-            }
             articulos = NegocioArticulo.listarArticulos(filtroArticulo);
 
             foreach (Articulo articulo in articulos)
@@ -152,6 +153,12 @@ namespace presentacion
             cbxFiltroMarcas.DataSource = negocioMarca.listarMarcas();
             cbxFiltroMarcas.SelectedIndex = -1;
 
+            // Cargar los filtros por rango de precio
+            filtroArticulo.PorRangoDePrecios = NegocioArticulo.obtenerRangosDePrecios();
+            lblProductosPrecioBajo.Text = TEXTO_HASTA + filtroArticulo.PorRangoDePrecios.PrecioInferior;
+
+            lblProductosConPrecioMedio.Text = SIGNO_DOLAR + filtroArticulo.PorRangoDePrecios.PrecioInferior + A_MINUSCULA + SIGNO_DOLAR + filtroArticulo.PorRangoDePrecios.PreccioSuperior;
+            lblProductosConPrecioAlto.Text = TEXTO_MAS_DE + filtroArticulo.PorRangoDePrecios.PreccioSuperior;
         }
 
         private void cbxOrden_SelectedIndexChanged(object sender, EventArgs e)
@@ -190,6 +197,43 @@ namespace presentacion
         {
             filtroArticulo.categoriaAFiltrar = (Categoria)cbxFiltroCategorias.SelectedItem;
 
+            LimpiarArticulos();
+            ListarArticulos();
+        }
+
+        private void panelFiltroAvanzado_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblProductosPrecioBajo_Click(object sender, EventArgs e)
+        {
+            // Filtrar los productos con el precio hasta.
+            filtroArticulo.TipoDeRangoPrecio = 1;
+            LimpiarArticulos();
+            ListarArticulos();
+        }
+
+        private void lblProductosConPrecioMedio_Click(object sender, EventArgs e)
+        {
+            filtroArticulo.TipoDeRangoPrecio = 2;
+            LimpiarArticulos();
+            ListarArticulos();
+        }
+
+        private void lblProductosConPrecioAlto_Click(object sender, EventArgs e)
+        {
+            filtroArticulo.TipoDeRangoPrecio = 3;
+            LimpiarArticulos();
+            ListarArticulos();
+        }
+
+        private void btnBuscarProductosPorRango_Click(object sender, EventArgs e)
+        {
+            filtroArticulo.TipoDeRangoPrecio = 2;
+            filtroArticulo.PorRangoDePrecios = new RangoPrecios();
+            filtroArticulo.PorRangoDePrecios.PrecioInferior = double.Parse(txtMinimo.Text);
+            filtroArticulo.PorRangoDePrecios.PreccioSuperior = double.Parse(txtMaximo.Text);
             LimpiarArticulos();
             ListarArticulos();
         }

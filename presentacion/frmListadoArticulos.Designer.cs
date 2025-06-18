@@ -183,6 +183,7 @@
             this.panelFiltroAvanzado.Name = "panelFiltroAvanzado";
             this.panelFiltroAvanzado.Size = new System.Drawing.Size(390, 445);
             this.panelFiltroAvanzado.TabIndex = 6;
+            this.panelFiltroAvanzado.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFiltroAvanzado_Paint);
             // 
             // btnBuscarProductosPorRango
             // 
@@ -193,6 +194,7 @@
             this.btnBuscarProductosPorRango.TabIndex = 12;
             this.btnBuscarProductosPorRango.Text = ">";
             this.btnBuscarProductosPorRango.UseVisualStyleBackColor = true;
+            this.btnBuscarProductosPorRango.Click += new System.EventHandler(this.btnBuscarProductosPorRango_Click);
             // 
             // lblMaximo
             // 
@@ -233,32 +235,35 @@
             // lblProductosConPrecioAlto
             // 
             this.lblProductosConPrecioAlto.AutoSize = true;
+            this.lblProductosConPrecioAlto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblProductosConPrecioAlto.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductosConPrecioAlto.Location = new System.Drawing.Point(21, 319);
             this.lblProductosConPrecioAlto.Name = "lblProductosConPrecioAlto";
-            this.lblProductosConPrecioAlto.Size = new System.Drawing.Size(70, 19);
+            this.lblProductosConPrecioAlto.Size = new System.Drawing.Size(0, 19);
             this.lblProductosConPrecioAlto.TabIndex = 7;
-            this.lblProductosConPrecioAlto.Text = "Más de $ ";
+            this.lblProductosConPrecioAlto.Click += new System.EventHandler(this.lblProductosConPrecioAlto_Click);
             // 
             // lblProductosConPrecioMedio
             // 
             this.lblProductosConPrecioMedio.AutoSize = true;
+            this.lblProductosConPrecioMedio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblProductosConPrecioMedio.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductosConPrecioMedio.Location = new System.Drawing.Point(22, 287);
             this.lblProductosConPrecioMedio.Name = "lblProductosConPrecioMedio";
-            this.lblProductosConPrecioMedio.Size = new System.Drawing.Size(189, 19);
+            this.lblProductosConPrecioMedio.Size = new System.Drawing.Size(0, 19);
             this.lblProductosConPrecioMedio.TabIndex = 6;
-            this.lblProductosConPrecioMedio.Text = "$ {precioBajo} a $ {precioAlto}";
+            this.lblProductosConPrecioMedio.Click += new System.EventHandler(this.lblProductosConPrecioMedio_Click);
             // 
             // lblProductosPrecioBajo
             // 
             this.lblProductosPrecioBajo.AutoSize = true;
+            this.lblProductosPrecioBajo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblProductosPrecioBajo.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductosPrecioBajo.Location = new System.Drawing.Point(22, 251);
             this.lblProductosPrecioBajo.Name = "lblProductosPrecioBajo";
-            this.lblProductosPrecioBajo.Size = new System.Drawing.Size(60, 19);
+            this.lblProductosPrecioBajo.Size = new System.Drawing.Size(0, 19);
             this.lblProductosPrecioBajo.TabIndex = 5;
-            this.lblProductosPrecioBajo.Text = "Hasta $ ";
+            this.lblProductosPrecioBajo.Click += new System.EventHandler(this.lblProductosPrecioBajo_Click);
             // 
             // lblFiltroPrecio
             // 

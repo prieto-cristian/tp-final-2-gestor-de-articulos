@@ -17,7 +17,7 @@ namespace negocio
         }
         public List<Articulo> listarArticulos(FiltroArticulo filtroActivo)
         {
-            string consultaSQL = "SELECT A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id AS idMarca, M.Descripcion AS descripcionMarca, C.Id AS idCategoria, C.Descripcion AS descripcionCategorias FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id AND (@IdMarcaAFiltrar IS NULL OR M.Id = @IdMarcaAFiltrar) AND (@IdCategoriaAFiltrar IS NULL OR C.Id = @IdCategoriaAFiltrar) ORDER BY A.Precio ";
+            string consultaSQL = "SELECT A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id AS idMarca, M.Descripcion AS descripcionMarca, C.Id AS idCategoria, C.Descripcion AS descripcionCategorias FROM ARTICULOS A JOIN MARCAS M ON A.IdMarca = M.Id JOIN CATEGORIAS C ON A.IdCategoria = C.Id WHERE (@IdMarcaAFiltrar IS NULL OR M.Id = @IdMarcaAFiltrar) AND (@IdCategoriaAFiltrar IS NULL OR C.Id = @IdCategoriaAFiltrar) AND ( @TipoDeRango IS NULL OR (@TipoDeRango = 1 AND A.Precio <= @PrecioInferior) OR (@TipoDeRango = 2 AND A.Precio > @PrecioInferior AND A.Precio <= @PrecioSuperior) OR (@TipoDeRango = 3 AND A.Precio > @PrecioSuperior) ) ORDER BY A.Precio ";
             consultaSQL += filtroActivo.OrdenarPor;
             
             List<Articulo> articulos = new List<Articulo>();
@@ -41,7 +41,32 @@ namespace negocio
                 {
                     datos.parametrizar("@IdCategoriaAFiltrar");
                 }
-                datos.ejecutarAccion();
+                if (filtroActivo.TipoDeRangoPrecio != null)
+                {
+                    datos.parametrizar("@TipoDeRango", filtroActivo.TipoDeRangoPrecio);
+                    if(filtroActivo.TipoDeRangoPrecio == 1)
+                    {
+                        datos.parametrizar("@PrecioInferior", filtroActivo.PorRangoDePrecios.PrecioInferior);
+                        datos.parametrizar("@PrecioSuperior");
+                    }
+                    else if(filtroActivo.TipoDeRangoPrecio == 2)
+                    {
+                        datos.parametrizar("@PrecioInferior", filtroActivo.PorRangoDePrecios.PrecioInferior);
+                        datos.parametrizar("@PrecioSuperior", filtroActivo.PorRangoDePrecios.PreccioSuperior);
+                    }
+                    else
+                    {
+                        datos.parametrizar("@PrecioSuperior", filtroActivo.PorRangoDePrecios.PreccioSuperior);
+                        datos.parametrizar("@PrecioInferior");
+                    }
+                }
+                else
+                {
+                    datos.parametrizar("@TipoDeRango");
+                    datos.parametrizar("@PrecioInferior");
+                    datos.parametrizar("@PrecioSuperior");
+                }
+                    datos.ejecutarAccion();
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
@@ -232,6 +257,29 @@ namespace negocio
                     resultado = (int)datos.Lector["Cantidad"];
                 }
                 return resultado;
+            }
+            catch(Exception ex) { throw ex; }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        // Metodo que se utilizar para el filtro por rango de precios.
+        public RangoPrecios obtenerRangosDePrecios()
+        {
+            string consultaSQL = "SELECT TOP 1 PERCENTILE_CONT(0.33) WITHIN GROUP (ORDER BY Precio) OVER () AS PrecioInferior, PERCENTILE_CONT(0.66) WITHIN GROUP (ORDER BY Precio) OVER () AS PrecioSuperior FROM ARTICULOS";
+            try
+            {
+                RangoPrecios rangoAux = new RangoPrecios();
+                datos.setearConsulta(consultaSQL);
+                datos.ejecutarAccion();
+                while (datos.Lector.Read())
+                {
+                    rangoAux.PrecioInferior = (double)datos.Lector["PrecioInferior"];
+                    rangoAux.PreccioSuperior = (double)datos.Lector["PrecioSuperior"];
+                }
+                return rangoAux;
             }
             catch(Exception ex) { throw ex; }
             finally

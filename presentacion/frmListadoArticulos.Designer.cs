@@ -123,6 +123,7 @@
             this.txtBuscador.Click += new System.EventHandler(this.textBox1_Click);
             this.txtBuscador.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.txtBuscador.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.txtBuscador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscador_KeyPress);
             this.txtBuscador.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // btnAgregarArticulo
@@ -229,8 +230,9 @@
             this.lblProductosConPrecioAlto.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductosConPrecioAlto.Location = new System.Drawing.Point(21, 319);
             this.lblProductosConPrecioAlto.Name = "lblProductosConPrecioAlto";
-            this.lblProductosConPrecioAlto.Size = new System.Drawing.Size(0, 19);
+            this.lblProductosConPrecioAlto.Size = new System.Drawing.Size(16, 19);
             this.lblProductosConPrecioAlto.TabIndex = 7;
+            this.lblProductosConPrecioAlto.Text = "a";
             this.lblProductosConPrecioAlto.Click += new System.EventHandler(this.lblProductosConPrecioAlto_Click);
             // 
             // lblProductosConPrecioMedio
@@ -240,8 +242,9 @@
             this.lblProductosConPrecioMedio.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductosConPrecioMedio.Location = new System.Drawing.Point(22, 287);
             this.lblProductosConPrecioMedio.Name = "lblProductosConPrecioMedio";
-            this.lblProductosConPrecioMedio.Size = new System.Drawing.Size(0, 19);
+            this.lblProductosConPrecioMedio.Size = new System.Drawing.Size(16, 19);
             this.lblProductosConPrecioMedio.TabIndex = 6;
+            this.lblProductosConPrecioMedio.Text = "a";
             this.lblProductosConPrecioMedio.Click += new System.EventHandler(this.lblProductosConPrecioMedio_Click);
             // 
             // lblProductosPrecioBajo
@@ -251,8 +254,9 @@
             this.lblProductosPrecioBajo.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductosPrecioBajo.Location = new System.Drawing.Point(22, 251);
             this.lblProductosPrecioBajo.Name = "lblProductosPrecioBajo";
-            this.lblProductosPrecioBajo.Size = new System.Drawing.Size(0, 19);
+            this.lblProductosPrecioBajo.Size = new System.Drawing.Size(16, 19);
             this.lblProductosPrecioBajo.TabIndex = 5;
+            this.lblProductosPrecioBajo.Text = "a";
             this.lblProductosPrecioBajo.Click += new System.EventHandler(this.lblProductosPrecioBajo_Click);
             // 
             // lblFiltroPrecio

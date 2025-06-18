@@ -109,7 +109,9 @@ namespace presentacion
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            filtroArticulo.cadenaDeTextoABuscar = txtBuscador.Text;
+            LimpiarArticulos();
+            ListarArticulos();
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
@@ -259,6 +261,16 @@ namespace presentacion
             txtMinimo.Text = "";
             LimpiarArticulos();
             ListarArticulos();
+        }
+
+        private void txtBuscador_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                filtroArticulo.cadenaDeTextoABuscar = txtBuscador.Text;
+                LimpiarArticulos();
+                ListarArticulos();
+            }
         }
     }
 }

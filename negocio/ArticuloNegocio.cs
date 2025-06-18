@@ -17,7 +17,7 @@ namespace negocio
         }
         public List<Articulo> listarArticulos(FiltroArticulo filtroActivo)
         {
-            string consultaSQL = "SELECT A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id AS idMarca, M.Descripcion AS descripcionMarca, C.Id AS idCategoria, C.Descripcion AS descripcionCategorias FROM ARTICULOS A JOIN MARCAS M ON A.IdMarca = M.Id JOIN CATEGORIAS C ON A.IdCategoria = C.Id WHERE (@IdMarcaAFiltrar IS NULL OR M.Id = @IdMarcaAFiltrar) AND (@IdCategoriaAFiltrar IS NULL OR C.Id = @IdCategoriaAFiltrar) AND ( @TipoDeRango IS NULL OR (@TipoDeRango = 1 AND A.Precio <= @PrecioInferior) OR (@TipoDeRango = 2 AND A.Precio > @PrecioInferior AND A.Precio <= @PrecioSuperior) OR (@TipoDeRango = 3 AND A.Precio > @PrecioSuperior) ) ORDER BY A.Precio ";
+            string consultaSQL = "SELECT A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id AS idMarca, M.Descripcion AS descripcionMarca, C.Id AS idCategoria, C.Descripcion AS descripcionCategorias FROM ARTICULOS A JOIN MARCAS M ON A.IdMarca = M.Id JOIN CATEGORIAS C ON A.IdCategoria = C.Id WHERE (@IdMarcaAFiltrar IS NULL OR M.Id = @IdMarcaAFiltrar) AND (@IdCategoriaAFiltrar IS NULL OR C.Id = @IdCategoriaAFiltrar) AND ( @TipoDeRango IS NULL OR (@TipoDeRango = 1 AND A.Precio <= @PrecioInferior) OR (@TipoDeRango = 2 AND A.Precio > @PrecioInferior AND A.Precio <= @PrecioSuperior) OR (@TipoDeRango = 3 AND A.Precio > @PrecioSuperior) ) AND (@TextoNombre IS NULL OR A.Nombre LIKE '%' + @TextoNombre + '%') ORDER BY A.Precio ";
             consultaSQL += filtroActivo.OrdenarPor;
             
             List<Articulo> articulos = new List<Articulo>();
@@ -66,7 +66,15 @@ namespace negocio
                     datos.parametrizar("@PrecioInferior");
                     datos.parametrizar("@PrecioSuperior");
                 }
-                    datos.ejecutarAccion();
+                if(filtroActivo.cadenaDeTextoABuscar == "")
+                {
+                    datos.parametrizar("@TextoNombre");
+                }
+                else
+                {
+                    datos.parametrizar("@TextoNombre", filtroActivo.cadenaDeTextoABuscar);
+                }
+                datos.ejecutarAccion();
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();

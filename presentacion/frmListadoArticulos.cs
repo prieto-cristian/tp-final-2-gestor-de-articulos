@@ -237,5 +237,28 @@ namespace presentacion
             LimpiarArticulos();
             ListarArticulos();
         }
+
+        // No necesita limpiar y listar la lista. Esto se hace desde el evento Selected
+        private void btnLimpiarFiltroDeMarca_Click(object sender, EventArgs e)
+        {
+            filtroArticulo.marcaAFiltrar = null;
+            cbxFiltroMarcas.SelectedIndex = -1;
+        }
+
+        // No necesita limpiar y listar la lista. Esto se hace desde el evento Selected
+        private void btnLimpiarFiltroCategoria_Click(object sender, EventArgs e)
+        {
+            filtroArticulo.categoriaAFiltrar = null;
+            cbxFiltroCategorias.SelectedIndex = -1;
+        }
+
+        private void btnLimpiarFiltroDePrecios_Click(object sender, EventArgs e)
+        {
+            filtroArticulo.TipoDeRangoPrecio = null;
+            txtMaximo.Text = "";
+            txtMinimo.Text = "";
+            LimpiarArticulos();
+            ListarArticulos();
+        }
     }
 }

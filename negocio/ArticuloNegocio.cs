@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using dominio;
@@ -17,7 +18,7 @@ namespace negocio
         }
         public List<Articulo> listarArticulos(FiltroArticulo filtroActivo)
         {
-            string consultaSQL = "SELECT A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id AS idMarca, M.Descripcion AS descripcionMarca, C.Id AS idCategoria, C.Descripcion AS descripcionCategorias FROM ARTICULOS A JOIN MARCAS M ON A.IdMarca = M.Id JOIN CATEGORIAS C ON A.IdCategoria = C.Id WHERE (@IdMarcaAFiltrar IS NULL OR M.Id = @IdMarcaAFiltrar) AND (@IdCategoriaAFiltrar IS NULL OR C.Id = @IdCategoriaAFiltrar) AND ( @TipoDeRango IS NULL OR (@TipoDeRango = 1 AND A.Precio <= @PrecioInferior) OR (@TipoDeRango = 2 AND A.Precio > @PrecioInferior AND A.Precio <= @PrecioSuperior) OR (@TipoDeRango = 3 AND A.Precio > @PrecioSuperior) ) AND (@TextoNombre IS NULL OR A.Nombre LIKE '%' + @TextoNombre + '%') ORDER BY A.Precio ";
+            string consultaSQL = "SELECT A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id AS idMarca, M.Descripcion AS descripcionMarca, C.Id AS idCategoria, C.Descripcion AS descripcionCategorias FROM ARTICULOS A LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id WHERE (@IdMarcaAFiltrar IS NULL OR M.Id = @IdMarcaAFiltrar) AND (@IdCategoriaAFiltrar IS NULL OR C.Id = @IdCategoriaAFiltrar) AND ( @TipoDeRango IS NULL OR (@TipoDeRango = 1 AND A.Precio <= @PrecioInferior) OR (@TipoDeRango = 2 AND A.Precio > @PrecioInferior AND A.Precio <= @PrecioSuperior) OR (@TipoDeRango = 3 AND A.Precio > @PrecioSuperior) ) AND (@TextoNombre IS NULL OR A.Nombre LIKE '%' + @TextoNombre + '%') ORDER BY A.Precio ";
             consultaSQL += filtroActivo.OrdenarPor;
             
             List<Articulo> articulos = new List<Articulo>();
@@ -85,16 +86,21 @@ namespace negocio
                     aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
                     aux.CodigoDeArticulo = (string)datos.Lector["Codigo"];
 
-                    Marca auxMarca = new Marca();
-                    auxMarca.Id = (int)datos.Lector["idMarca"];
-                    auxMarca.Descripcion = (string)datos.Lector["descripcionMarca"];
+                    if (!(datos.Lector["idMarca"] is DBNull))
+                    {
+                        Marca auxMarca = new Marca();
+                        auxMarca.Id = (int)datos.Lector["idMarca"];
+                        auxMarca.Descripcion = (string)datos.Lector["descripcionMarca"];
+                        aux.MarcaDelArticulo = auxMarca;
+                    }
 
-                    Categoria auxCategoria = new Categoria();
-                    auxCategoria.Id = (int)datos.Lector["idCategoria"];
-                    auxCategoria.Descripcion = (string)datos.Lector["descripcionCategorias"];
-
-                    aux.MarcaDelArticulo = auxMarca;
-                    aux.CategoriaDelArticulo = auxCategoria;
+                    if (!(datos.Lector["idCategoria"] is DBNull))
+                    {
+                        Categoria auxCategoria = new Categoria();
+                        auxCategoria.Id = (int)datos.Lector["idCategoria"];
+                        auxCategoria.Descripcion = (string)datos.Lector["descripcionCategorias"];
+                        aux.CategoriaDelArticulo = auxCategoria;
+                    }
 
                     articulos.Add(aux);
                 }
@@ -117,13 +123,27 @@ namespace negocio
             {
                 datos.setearConsulta(consultaSQL);
                 datos.parametrizar("@Codigo", unArticulo.CodigoDeArticulo);
+                datos.parametrizar("@Precio", (decimal)unArticulo.Precio);
+                datos.parametrizar("@Nombre", unArticulo.Nombre);
                 datos.parametrizar("@Descripcion", unArticulo.Descripcion);
                 datos.parametrizar("@ImagenUrl", unArticulo.UrlImagen);
-                datos.parametrizar("@Nombre", unArticulo.Nombre);
-                datos.parametrizar("@Precio", (decimal)unArticulo.Precio);
-                datos.parametrizar("@IdMarca", unArticulo.MarcaDelArticulo.Id);
-                datos.parametrizar("@IdCategoria", unArticulo.CategoriaDelArticulo.Id);
+                if(unArticulo.MarcaDelArticulo != null)
+                {
+                    datos.parametrizar("@IdMarca", unArticulo.MarcaDelArticulo.Id);
 
+                }
+                else
+                {
+                    datos.parametrizar("@IdMarca");
+                }
+                if(unArticulo.CategoriaDelArticulo != null)
+                {
+                    datos.parametrizar("@IdCategoria", unArticulo.CategoriaDelArticulo.Id);
+                }
+                else
+                {
+                    datos.parametrizar("@IdCategoria");
+                }
                 datos.guardar();
             }
             catch(Exception ex) { throw ex; }
@@ -142,8 +162,23 @@ namespace negocio
                 datos.parametrizar("@Codigo", unArticulo.CodigoDeArticulo);
                 datos.parametrizar("@Nombre", unArticulo.Nombre);
                 datos.parametrizar("@Descripcion", unArticulo.Descripcion);
-                datos.parametrizar("@IdMarca", unArticulo.MarcaDelArticulo.Id);
-                datos.parametrizar("@IdCategoria", unArticulo.CategoriaDelArticulo.Id);
+                if (unArticulo.MarcaDelArticulo != null)
+                {
+                    datos.parametrizar("@IdMarca", unArticulo.MarcaDelArticulo.Id);
+
+                }
+                else
+                {
+                    datos.parametrizar("@IdMarca");
+                }
+                if (unArticulo.CategoriaDelArticulo != null)
+                {
+                    datos.parametrizar("@IdCategoria", unArticulo.CategoriaDelArticulo.Id);
+                }
+                else
+                {
+                    datos.parametrizar("@IdCategoria");
+                }
                 datos.parametrizar("@UrlImagen", unArticulo.UrlImagen);
                 datos.parametrizar("@Precio", unArticulo.Precio);
                 datos.parametrizar("@Id", unArticulo.Id);

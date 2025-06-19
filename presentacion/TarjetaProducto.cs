@@ -31,7 +31,15 @@ namespace presentacion
         // Uso de LoadAsync para mejorar la carga al momento de filtrar los articulos.
         private void cargarImagen(string urlImagen)
         {
-            pbxImagenProducto.LoadAsync(urlImagen);
+            try
+            {
+                pbxImagenProducto.LoadAsync(urlImagen);
+
+            }
+            catch (Exception ex)
+            {
+                pbxImagenProducto.LoadAsync("https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg");
+            }
         }
 
         

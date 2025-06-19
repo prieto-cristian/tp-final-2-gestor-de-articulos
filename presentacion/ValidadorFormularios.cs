@@ -19,14 +19,28 @@ namespace presentacion
             }
             return true;
         }
-        public static bool EsTextoValido(string texto)
+        public static bool SinEspacios(string texto)
         {
-            if ((string.IsNullOrEmpty(texto)) || (string.IsNullOrWhiteSpace(texto)))
-            {
-                return false;
+            foreach (char c in texto) {
+                if (char.IsWhiteSpace(c))
+                {
+                    return false;
+                }
             }
             return true;
         }
+        public static bool NoEsVacio(string texto) { 
+            return !string.IsNullOrEmpty(texto);
+        }
 
+        public static bool TieneAlMenosUnCaracter(string texto) {
+            foreach (char c in texto) {
+                if (!char.IsWhiteSpace(c))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

@@ -297,7 +297,7 @@ namespace presentacion
 
         private void txtMinimo_Validated(object sender, EventArgs e)
         {
-            if (!ValidadorFormularios.EsTextoValido(txtMinimo.Text))
+            if (!ValidadorFormularios.NoEsVacio(txtMinimo.Text))
             {
                 PrecioMinimoErrorProvider.SetError(this.txtMinimo, "El campo no puede estar vacío");
             }
@@ -314,7 +314,7 @@ namespace presentacion
 
         private void txtMaximo_Validated(object sender, EventArgs e)
         {
-            if (!ValidadorFormularios.EsTextoValido(txtMaximo.Text))
+            if (!ValidadorFormularios.NoEsVacio(txtMaximo.Text))
             {
                 PrecioMayorErrorProvider.SetError(this.txtMaximo, "El campo no puede estar vacío");
             }

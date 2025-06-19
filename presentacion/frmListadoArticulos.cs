@@ -21,10 +21,25 @@ namespace presentacion
         private string SIGNO_DOLAR = "$";
         private string TEXTO_MAS_DE = "Más de $";
         private string A_MINUSCULA = " a ";
+        private ErrorProvider PrecioMinimoErrorProvider;
+        private ErrorProvider PrecioMayorErrorProvider;
         public frmListadoArticulos()
         {
             InitializeComponent();
             this.NegocioArticulo = new ArticuloNegocio();
+
+            // Cree y configure los ErrorProvider para la entrada de datos.
+            PrecioMinimoErrorProvider = new ErrorProvider();
+            PrecioMinimoErrorProvider.SetIconAlignment(this.txtMinimo, ErrorIconAlignment.MiddleRight);
+            PrecioMinimoErrorProvider.SetIconPadding(this.txtMinimo, 2);
+            PrecioMinimoErrorProvider.BlinkRate = 200;
+            PrecioMinimoErrorProvider.BlinkStyle = ErrorBlinkStyle.BlinkIfDifferentError;
+
+            PrecioMayorErrorProvider = new ErrorProvider();
+            PrecioMayorErrorProvider.SetIconAlignment(this.txtMaximo, ErrorIconAlignment.MiddleRight);
+            PrecioMayorErrorProvider.SetIconPadding(this.txtMaximo, 2);
+            PrecioMayorErrorProvider.BlinkRate = 200;
+            PrecioMayorErrorProvider.BlinkStyle = ErrorBlinkStyle.BlinkIfDifferentError;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -135,7 +150,7 @@ namespace presentacion
         private void CargarFiltros()
         {
             // Cargar el combo box que indica el orden por precios
-            cbxOrden.Items.AddRange(new object[] { "Menor precio", "Mayor precio"});
+            cbxOrden.Items.AddRange(new object[] { "Menor precio", "Mayor precio" });
             cbxOrden.SelectedIndex = 0;
 
             // Cargue las marcas y categorias de la base de datos al combo box
@@ -165,7 +180,7 @@ namespace presentacion
 
         private void cbxOrden_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void cbxOrden_SelectedValueChanged(object sender, EventArgs e)
@@ -184,7 +199,7 @@ namespace presentacion
 
         private void cbxOrden_Leave(object sender, EventArgs e)
         {
-            
+
         }
 
         private void cbxFiltroMarcas_SelectedValueChanged(object sender, EventArgs e)
@@ -234,10 +249,17 @@ namespace presentacion
         {
             filtroArticulo.TipoDeRangoPrecio = 2;
             filtroArticulo.PorRangoDePrecios = new RangoPrecios();
-            filtroArticulo.PorRangoDePrecios.PrecioInferior = double.Parse(txtMinimo.Text);
-            filtroArticulo.PorRangoDePrecios.PreccioSuperior = double.Parse(txtMaximo.Text);
-            LimpiarArticulos();
-            ListarArticulos();
+            try
+            {
+                filtroArticulo.PorRangoDePrecios.PrecioInferior = double.Parse(txtMinimo.Text);
+                filtroArticulo.PorRangoDePrecios.PreccioSuperior = double.Parse(txtMaximo.Text);
+                LimpiarArticulos();
+                ListarArticulos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         // No necesita limpiar y listar la lista. Esto se hace desde el evento Selected
@@ -265,11 +287,57 @@ namespace presentacion
 
         private void txtBuscador_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 filtroArticulo.cadenaDeTextoABuscar = txtBuscador.Text;
                 LimpiarArticulos();
                 ListarArticulos();
+            }
+        }
+
+        private void txtMinimo_Validated(object sender, EventArgs e)
+        {
+            if (!ValidadorFormularios.EsTextoValido(txtMinimo.Text))
+            {
+                PrecioMinimoErrorProvider.SetError(this.txtMinimo, "El campo no puede estar vacío");
+            }
+            else if (!ValidadorFormularios.SoloNumeros(txtMinimo.Text))
+            {
+                PrecioMinimoErrorProvider.SetError(this.txtMinimo, "Ingrese solo números");
+            }
+            else
+            {
+                PrecioMinimoErrorProvider.SetError(this.txtMinimo, String.Empty);
+                deboHabilitarBotonDeBusqueda();
+            }
+        }
+
+        private void txtMaximo_Validated(object sender, EventArgs e)
+        {
+            if (!ValidadorFormularios.EsTextoValido(txtMaximo.Text))
+            {
+                PrecioMayorErrorProvider.SetError(this.txtMaximo, "El campo no puede estar vacío");
+            }
+            else if (!ValidadorFormularios.SoloNumeros(txtMaximo.Text))
+            {
+                PrecioMayorErrorProvider.SetError(this.txtMaximo, "Ingrese solo números");
+            }
+            else
+            {
+                PrecioMayorErrorProvider.SetError(this.txtMaximo, String.Empty);
+                deboHabilitarBotonDeBusqueda();
+            }
+        }
+        private void deboHabilitarBotonDeBusqueda() {
+            if ((PrecioMinimoErrorProvider.GetError(txtMinimo) == String.Empty)
+                && (PrecioMayorErrorProvider.GetError(txtMaximo) == String.Empty)
+                )
+            {
+                btnBuscarProductosPorRango.Enabled = true;
+            }
+            else
+            {
+                btnBuscarProductosPorRango.Enabled = false;
             }
         }
     }

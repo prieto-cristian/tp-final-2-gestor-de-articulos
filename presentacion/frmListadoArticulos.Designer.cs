@@ -33,9 +33,13 @@
             this.lblOrden = new System.Windows.Forms.Label();
             this.panelBusqueda = new System.Windows.Forms.Panel();
             this.txtBuscador = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.btnAgregarArticulo = new System.Windows.Forms.Button();
             this.flpListadoProductos = new System.Windows.Forms.FlowLayoutPanel();
             this.panelFiltroAvanzado = new System.Windows.Forms.Panel();
+            this.btnLimpiarFiltroDeMarca = new System.Windows.Forms.Button();
+            this.btnLimpiarFiltroCategoria = new System.Windows.Forms.Button();
+            this.btnLimpiarFiltroDePrecios = new System.Windows.Forms.Button();
             this.btnBuscarProductosPorRango = new System.Windows.Forms.Button();
             this.lblMaximo = new System.Windows.Forms.Label();
             this.lblMinimo = new System.Windows.Forms.Label();
@@ -49,10 +53,6 @@
             this.lblFiltroCategoria = new System.Windows.Forms.Label();
             this.cbxFiltroMarcas = new System.Windows.Forms.ComboBox();
             this.lblFiltroMarcas = new System.Windows.Forms.Label();
-            this.btnLimpiarFiltroDePrecios = new System.Windows.Forms.Button();
-            this.btnLimpiarFiltroCategoria = new System.Windows.Forms.Button();
-            this.btnLimpiarFiltroDeMarca = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.panelBarraSuperior.SuspendLayout();
             this.panelBusqueda.SuspendLayout();
             this.panelFiltroAvanzado.SuspendLayout();
@@ -126,6 +126,22 @@
             this.txtBuscador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscador_KeyPress);
             this.txtBuscador.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBuscar.BackColor = System.Drawing.Color.LemonChiffon;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Image = global::presentacion.Properties.Resources.busqueda;
+            this.btnBuscar.Location = new System.Drawing.Point(411, 0);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(43, 40);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // btnAgregarArticulo
             // 
             this.btnAgregarArticulo.BackColor = System.Drawing.Color.LightCoral;
@@ -176,10 +192,41 @@
             this.panelFiltroAvanzado.TabIndex = 6;
             this.panelFiltroAvanzado.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFiltroAvanzado_Paint);
             // 
+            // btnLimpiarFiltroDeMarca
+            // 
+            this.btnLimpiarFiltroDeMarca.Image = global::presentacion.Properties.Resources.escoba;
+            this.btnLimpiarFiltroDeMarca.Location = new System.Drawing.Point(80, 50);
+            this.btnLimpiarFiltroDeMarca.Name = "btnLimpiarFiltroDeMarca";
+            this.btnLimpiarFiltroDeMarca.Size = new System.Drawing.Size(36, 23);
+            this.btnLimpiarFiltroDeMarca.TabIndex = 15;
+            this.btnLimpiarFiltroDeMarca.UseVisualStyleBackColor = true;
+            this.btnLimpiarFiltroDeMarca.Click += new System.EventHandler(this.btnLimpiarFiltroDeMarca_Click);
+            // 
+            // btnLimpiarFiltroCategoria
+            // 
+            this.btnLimpiarFiltroCategoria.Image = global::presentacion.Properties.Resources.escoba;
+            this.btnLimpiarFiltroCategoria.Location = new System.Drawing.Point(106, 137);
+            this.btnLimpiarFiltroCategoria.Name = "btnLimpiarFiltroCategoria";
+            this.btnLimpiarFiltroCategoria.Size = new System.Drawing.Size(39, 23);
+            this.btnLimpiarFiltroCategoria.TabIndex = 14;
+            this.btnLimpiarFiltroCategoria.UseVisualStyleBackColor = true;
+            this.btnLimpiarFiltroCategoria.Click += new System.EventHandler(this.btnLimpiarFiltroCategoria_Click);
+            // 
+            // btnLimpiarFiltroDePrecios
+            // 
+            this.btnLimpiarFiltroDePrecios.Image = global::presentacion.Properties.Resources.escoba;
+            this.btnLimpiarFiltroDePrecios.Location = new System.Drawing.Point(80, 221);
+            this.btnLimpiarFiltroDePrecios.Name = "btnLimpiarFiltroDePrecios";
+            this.btnLimpiarFiltroDePrecios.Size = new System.Drawing.Size(36, 23);
+            this.btnLimpiarFiltroDePrecios.TabIndex = 13;
+            this.btnLimpiarFiltroDePrecios.UseVisualStyleBackColor = true;
+            this.btnLimpiarFiltroDePrecios.Click += new System.EventHandler(this.btnLimpiarFiltroDePrecios_Click);
+            // 
             // btnBuscarProductosPorRango
             // 
+            this.btnBuscarProductosPorRango.Enabled = false;
             this.btnBuscarProductosPorRango.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarProductosPorRango.Location = new System.Drawing.Point(299, 372);
+            this.btnBuscarProductosPorRango.Location = new System.Drawing.Point(330, 369);
             this.btnBuscarProductosPorRango.Name = "btnBuscarProductosPorRango";
             this.btnBuscarProductosPorRango.Size = new System.Drawing.Size(32, 28);
             this.btnBuscarProductosPorRango.TabIndex = 12;
@@ -191,7 +238,7 @@
             // 
             this.lblMaximo.AutoSize = true;
             this.lblMaximo.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaximo.Location = new System.Drawing.Point(160, 375);
+            this.lblMaximo.Location = new System.Drawing.Point(175, 375);
             this.lblMaximo.Name = "lblMaximo";
             this.lblMaximo.Size = new System.Drawing.Size(35, 19);
             this.lblMaximo.TabIndex = 11;
@@ -210,10 +257,11 @@
             // txtMaximo
             // 
             this.txtMaximo.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaximo.Location = new System.Drawing.Point(193, 372);
+            this.txtMaximo.Location = new System.Drawing.Point(208, 372);
             this.txtMaximo.Name = "txtMaximo";
             this.txtMaximo.Size = new System.Drawing.Size(100, 25);
             this.txtMaximo.TabIndex = 9;
+            this.txtMaximo.Validated += new System.EventHandler(this.txtMaximo_Validated);
             // 
             // txtMinimo
             // 
@@ -222,6 +270,7 @@
             this.txtMinimo.Name = "txtMinimo";
             this.txtMinimo.Size = new System.Drawing.Size(100, 25);
             this.txtMinimo.TabIndex = 8;
+            this.txtMinimo.Validated += new System.EventHandler(this.txtMinimo_Validated);
             // 
             // lblProductosConPrecioAlto
             // 
@@ -310,52 +359,6 @@
             this.lblFiltroMarcas.Size = new System.Drawing.Size(51, 19);
             this.lblFiltroMarcas.TabIndex = 0;
             this.lblFiltroMarcas.Text = "Marca";
-            // 
-            // btnLimpiarFiltroDePrecios
-            // 
-            this.btnLimpiarFiltroDePrecios.Image = global::presentacion.Properties.Resources.escoba;
-            this.btnLimpiarFiltroDePrecios.Location = new System.Drawing.Point(80, 221);
-            this.btnLimpiarFiltroDePrecios.Name = "btnLimpiarFiltroDePrecios";
-            this.btnLimpiarFiltroDePrecios.Size = new System.Drawing.Size(36, 23);
-            this.btnLimpiarFiltroDePrecios.TabIndex = 13;
-            this.btnLimpiarFiltroDePrecios.UseVisualStyleBackColor = true;
-            this.btnLimpiarFiltroDePrecios.Click += new System.EventHandler(this.btnLimpiarFiltroDePrecios_Click);
-            // 
-            // btnLimpiarFiltroCategoria
-            // 
-            this.btnLimpiarFiltroCategoria.Image = global::presentacion.Properties.Resources.escoba;
-            this.btnLimpiarFiltroCategoria.Location = new System.Drawing.Point(106, 137);
-            this.btnLimpiarFiltroCategoria.Name = "btnLimpiarFiltroCategoria";
-            this.btnLimpiarFiltroCategoria.Size = new System.Drawing.Size(39, 23);
-            this.btnLimpiarFiltroCategoria.TabIndex = 14;
-            this.btnLimpiarFiltroCategoria.UseVisualStyleBackColor = true;
-            this.btnLimpiarFiltroCategoria.Click += new System.EventHandler(this.btnLimpiarFiltroCategoria_Click);
-            // 
-            // btnLimpiarFiltroDeMarca
-            // 
-            this.btnLimpiarFiltroDeMarca.Image = global::presentacion.Properties.Resources.escoba;
-            this.btnLimpiarFiltroDeMarca.Location = new System.Drawing.Point(80, 50);
-            this.btnLimpiarFiltroDeMarca.Name = "btnLimpiarFiltroDeMarca";
-            this.btnLimpiarFiltroDeMarca.Size = new System.Drawing.Size(36, 23);
-            this.btnLimpiarFiltroDeMarca.TabIndex = 15;
-            this.btnLimpiarFiltroDeMarca.UseVisualStyleBackColor = true;
-            this.btnLimpiarFiltroDeMarca.Click += new System.EventHandler(this.btnLimpiarFiltroDeMarca_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnBuscar.BackColor = System.Drawing.Color.LemonChiffon;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Image = global::presentacion.Properties.Resources.busqueda;
-            this.btnBuscar.Location = new System.Drawing.Point(411, 0);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(43, 40);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // frmListadoArticulos
             // 

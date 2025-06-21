@@ -251,7 +251,7 @@ namespace negocio
 
         public Articulo ObtenerArticuloMasCaro()
         {
-            string consultaSQL = "select TOP 1 A.Id, A.Codigo, A.Descripcion, A.ImagenUrl, A.Nombre, A.Precio, M.Id idMarca, M.Descripcion descripcionMarca, C.Id idCategoria, C.Descripcion descripcionCategorias From ARTICULOS A, MARCAS M, CATEGORIAS C WHERE A.IdMarca = M.Id AND A.IdCategoria = C.Id ORDER BY Precio DESC";
+            string consultaSQL = "SELECT TOP 1 \r\n    A.Id, \r\n    A.Codigo, \r\n    A.Descripcion, \r\n    A.ImagenUrl, \r\n    A.Nombre, \r\n    A.Precio, \r\n    M.Id AS idMarca, \r\n    M.Descripcion AS descripcionMarca, \r\n    C.Id AS idCategoria, \r\n    C.Descripcion AS descripcionCategorias\r\nFROM ARTICULOS A\r\nLEFT JOIN MARCAS M ON A.IdMarca = M.Id\r\nLEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id\r\nORDER BY A.Precio DESC";
             Articulo aux = new Articulo();
             try
             {
@@ -267,16 +267,21 @@ namespace negocio
                     aux.UrlImagen = (string)datos.Lector["ImagenUrl"];
                     aux.CodigoDeArticulo = (string)datos.Lector["Codigo"];
 
-                    Marca auxMarca = new Marca();
-                    auxMarca.Id = (int)datos.Lector["idMarca"];
-                    auxMarca.Descripcion = (string)datos.Lector["descripcionMarca"];
+                    if (!(datos.Lector["idMarca"] is DBNull))
+                    {
+                        Marca auxMarca = new Marca();
+                        auxMarca.Id = (int)datos.Lector["idMarca"];
+                        auxMarca.Descripcion = (string)datos.Lector["descripcionMarca"];
+                        aux.MarcaDelArticulo = auxMarca;
+                    }
 
-                    Categoria auxCategoria = new Categoria();
-                    auxCategoria.Id = (int)datos.Lector["idCategoria"];
-                    auxCategoria.Descripcion = (string)datos.Lector["descripcionCategorias"];
-
-                    aux.CategoriaDelArticulo = auxCategoria;
-                    aux.MarcaDelArticulo = auxMarca;
+                    if (!(datos.Lector["idCategoria"] is DBNull) )
+                    {
+                        Categoria auxCategoria = new Categoria();
+                        auxCategoria.Id = (int)datos.Lector["idCategoria"];
+                        auxCategoria.Descripcion = (string)datos.Lector["descripcionCategorias"];
+                        aux.CategoriaDelArticulo = auxCategoria;
+                    }
                 }
 
                 return aux;

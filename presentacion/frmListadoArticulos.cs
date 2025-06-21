@@ -23,6 +23,7 @@ namespace presentacion
         private string A_MINUSCULA = " a ";
         private ErrorProvider PrecioMinimoErrorProvider;
         private ErrorProvider PrecioMayorErrorProvider;
+        private Label etiquetaActualDelFiltroPrecios = null;
         public frmListadoArticulos()
         {
             InitializeComponent();
@@ -225,24 +226,45 @@ namespace presentacion
 
         private void lblProductosPrecioBajo_Click(object sender, EventArgs e)
         {
-            // Filtrar los productos con el precio hasta.
-            filtroArticulo.TipoDeRangoPrecio = 1;
-            LimpiarArticulos();
-            ListarArticulos();
+            if(etiquetaActualDelFiltroPrecios != lblProductosPrecioBajo)
+            {
+                // Filtrar los productos con el precio hasta.
+                LimpiarEstilosEtiquetaRangoPrecio();
+                filtroArticulo.TipoDeRangoPrecio = 1;
+                LimpiarArticulos();
+                ListarArticulos();
+                etiquetaActualDelFiltroPrecios = lblProductosPrecioBajo;
+                Font fuente = new Font(lblProductosPrecioBajo.Font.FontFamily,11, FontStyle.Bold);
+                lblProductosPrecioBajo.Font = fuente;
+            }
+
         }
 
         private void lblProductosConPrecioMedio_Click(object sender, EventArgs e)
         {
-            filtroArticulo.TipoDeRangoPrecio = 2;
-            LimpiarArticulos();
-            ListarArticulos();
+            if(etiquetaActualDelFiltroPrecios != lblProductosConPrecioMedio)
+            {
+                LimpiarEstilosEtiquetaRangoPrecio();
+                filtroArticulo.TipoDeRangoPrecio = 2;
+                LimpiarArticulos();
+                ListarArticulos();
+                etiquetaActualDelFiltroPrecios = lblProductosConPrecioMedio;
+                Font fuente = new Font(lblProductosConPrecioMedio.Font.FontFamily, 11, FontStyle.Bold);
+                lblProductosConPrecioMedio.Font = fuente;
+            }
         }
 
         private void lblProductosConPrecioAlto_Click(object sender, EventArgs e)
         {
-            filtroArticulo.TipoDeRangoPrecio = 3;
-            LimpiarArticulos();
-            ListarArticulos();
+            if (etiquetaActualDelFiltroPrecios != lblProductosConPrecioAlto) {
+                LimpiarEstilosEtiquetaRangoPrecio();
+                filtroArticulo.TipoDeRangoPrecio = 3;
+                LimpiarArticulos();
+                ListarArticulos();
+                etiquetaActualDelFiltroPrecios = lblProductosConPrecioAlto;
+                Font fuente = new Font(lblProductosConPrecioAlto.Font.FontFamily, 11, FontStyle.Bold);
+                lblProductosConPrecioAlto.Font = fuente;
+            }
         }
 
         private void btnBuscarProductosPorRango_Click(object sender, EventArgs e)
@@ -294,6 +316,8 @@ namespace presentacion
 
         private void btnLimpiarFiltroDePrecios_Click(object sender, EventArgs e)
         {
+            LimpiarEstilosEtiquetaRangoPrecio();
+            etiquetaActualDelFiltroPrecios = null;
             filtroArticulo.TipoDeRangoPrecio = null;
             txtMaximo.Text = "";
             txtMinimo.Text = "";
@@ -330,6 +354,16 @@ namespace presentacion
             else
             {
                 errorProvider.SetError(textBox, String.Empty);
+            }
+        }
+
+        // Coloca los estilos como estaban antes de haberle dado click
+        private void LimpiarEstilosEtiquetaRangoPrecio()
+        {
+            if(etiquetaActualDelFiltroPrecios != null)
+            {
+                Font fuente = new Font(etiquetaActualDelFiltroPrecios.Font.FontFamily, 10, FontStyle.Regular);
+                etiquetaActualDelFiltroPrecios.Font = fuente;
             }
         }
     }

@@ -224,13 +224,12 @@
             // 
             // btnBuscarProductosPorRango
             // 
-            this.btnBuscarProductosPorRango.Enabled = false;
-            this.btnBuscarProductosPorRango.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarProductosPorRango.Location = new System.Drawing.Point(330, 369);
+            this.btnBuscarProductosPorRango.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarProductosPorRango.Image = global::presentacion.Properties.Resources.busqueda;
+            this.btnBuscarProductosPorRango.Location = new System.Drawing.Point(326, 369);
             this.btnBuscarProductosPorRango.Name = "btnBuscarProductosPorRango";
-            this.btnBuscarProductosPorRango.Size = new System.Drawing.Size(32, 28);
+            this.btnBuscarProductosPorRango.Size = new System.Drawing.Size(30, 28);
             this.btnBuscarProductosPorRango.TabIndex = 12;
-            this.btnBuscarProductosPorRango.Text = ">";
             this.btnBuscarProductosPorRango.UseVisualStyleBackColor = true;
             this.btnBuscarProductosPorRango.Click += new System.EventHandler(this.btnBuscarProductosPorRango_Click);
             // 

@@ -251,10 +251,26 @@ namespace presentacion
             filtroArticulo.PorRangoDePrecios = new RangoPrecios();
             try
             {
-                filtroArticulo.PorRangoDePrecios.PrecioInferior = double.Parse(txtMinimo.Text);
-                filtroArticulo.PorRangoDePrecios.PreccioSuperior = double.Parse(txtMaximo.Text);
-                LimpiarArticulos();
-                ListarArticulos();
+                
+                if (!ValidadorFormularios.NoEsVacio(txtMinimo.Text))
+                {
+                    PrecioMinimoErrorProvider.SetError(txtMinimo, "El campo no puede estar vacío");
+                }
+                else if (!ValidadorFormularios.NoEsVacio(txtMaximo.Text))
+                {
+                    PrecioMayorErrorProvider.SetError(txtMaximo, "El campo no puede estar vacío");
+                }
+                else
+                {
+                    if (PrecioMinimoErrorProvider.GetError(txtMinimo) == String.Empty &&
+                    PrecioMayorErrorProvider.GetError(txtMaximo) == String.Empty)
+                    {
+                        filtroArticulo.PorRangoDePrecios.PrecioInferior = double.Parse(txtMinimo.Text);
+                        filtroArticulo.PorRangoDePrecios.PreccioSuperior = double.Parse(txtMaximo.Text);
+                        LimpiarArticulos();
+                        ListarArticulos();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -297,47 +313,23 @@ namespace presentacion
 
         private void txtMinimo_Validated(object sender, EventArgs e)
         {
-            if (!ValidadorFormularios.NoEsVacio(txtMinimo.Text))
-            {
-                PrecioMinimoErrorProvider.SetError(this.txtMinimo, "El campo no puede estar vacío");
-            }
-            else if (!ValidadorFormularios.SoloNumeros(txtMinimo.Text))
-            {
-                PrecioMinimoErrorProvider.SetError(this.txtMinimo, "Ingrese solo números");
-            }
-            else
-            {
-                PrecioMinimoErrorProvider.SetError(this.txtMinimo, String.Empty);
-                deboHabilitarBotonDeBusqueda();
-            }
+            ValidarLosRangosDePrecio(PrecioMinimoErrorProvider, txtMinimo);
         }
 
         private void txtMaximo_Validated(object sender, EventArgs e)
         {
-            if (!ValidadorFormularios.NoEsVacio(txtMaximo.Text))
-            {
-                PrecioMayorErrorProvider.SetError(this.txtMaximo, "El campo no puede estar vacío");
-            }
-            else if (!ValidadorFormularios.SoloNumeros(txtMaximo.Text))
-            {
-                PrecioMayorErrorProvider.SetError(this.txtMaximo, "Ingrese solo números");
-            }
-            else
-            {
-                PrecioMayorErrorProvider.SetError(this.txtMaximo, String.Empty);
-                deboHabilitarBotonDeBusqueda();
-            }
+            ValidarLosRangosDePrecio(PrecioMayorErrorProvider, txtMaximo);
         }
-        private void deboHabilitarBotonDeBusqueda() {
-            if ((PrecioMinimoErrorProvider.GetError(txtMinimo) == String.Empty)
-                && (PrecioMayorErrorProvider.GetError(txtMaximo) == String.Empty)
-                )
+
+        private void ValidarLosRangosDePrecio(ErrorProvider errorProvider, TextBox textBox)
+        {
+            if (!ValidadorFormularios.SoloNumeros(textBox.Text))
             {
-                btnBuscarProductosPorRango.Enabled = true;
+                errorProvider.SetError(textBox, "Ingrese solo números");
             }
             else
             {
-                btnBuscarProductosPorRango.Enabled = false;
+                errorProvider.SetError(textBox, String.Empty);
             }
         }
     }

@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="formularios\formsCategorias\frmAltaCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\formsCategorias\frmAltaCategoria.Designer.cs">
+      <DependentUpon>frmAltaCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="formularios\formsMarcas\frmAltaMarca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\formsArticulos\frmListadoArticulos.resx">
       <DependentUpon>frmListadoArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\formsCategorias\frmAltaCategoria.resx">
+      <DependentUpon>frmAltaCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\formsCategorias\frmListadoCategoria.resx">
       <DependentUpon>frmListadoCategoria.cs</DependentUpon>

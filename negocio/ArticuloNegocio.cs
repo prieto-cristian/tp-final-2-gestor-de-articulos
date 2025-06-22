@@ -356,5 +356,18 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public void DesvincularCategoria(int IdCategoria) {
+            string consultaSQL = "update ARTICULOS set IdCategoria = NULL WHERE IdCategoria = @IdCategoria";
+            try
+            {
+                datos.setearConsulta(consultaSQL);
+                datos.parametrizar("@IdCategoria", IdCategoria);
+                datos.ejecutarAccion();
+            }catch( Exception ex) { throw ex; }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

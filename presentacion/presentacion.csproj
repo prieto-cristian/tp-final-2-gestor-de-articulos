@@ -47,35 +47,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ValidadorFormularios.cs" />
-    <Compile Include="frmAgregarArticulo.cs">
+    <Compile Include="formularios\formsMarcas\frmAltaMarca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAgregarArticulo.Designer.cs">
+    <Compile Include="formularios\formsMarcas\frmAltaMarca.Designer.cs">
+      <DependentUpon>frmAltaMarca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ValidadorFormularios.cs" />
+    <Compile Include="formularios\formsArticulos\frmAgregarArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\formsArticulos\frmAgregarArticulo.Designer.cs">
       <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListadoArticulos.cs">
+    <Compile Include="formularios\formsArticulos\frmListadoArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListadoArticulos.Designer.cs">
+    <Compile Include="formularios\formsArticulos\frmListadoArticulos.Designer.cs">
       <DependentUpon>frmListadoArticulos.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListadoCategoria.cs">
+    <Compile Include="formularios\formsCategorias\frmListadoCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListadoCategoria.Designer.cs">
+    <Compile Include="formularios\formsCategorias\frmListadoCategoria.Designer.cs">
       <DependentUpon>frmListadoCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListadoMarcas.cs">
+    <Compile Include="formularios\formsMarcas\frmListadoMarcas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListadoMarcas.Designer.cs">
+    <Compile Include="formularios\formsMarcas\frmListadoMarcas.Designer.cs">
       <DependentUpon>frmListadoMarcas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmResumenArticulos.cs">
+    <Compile Include="formularios\formsArticulos\frmResumenArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmResumenArticulos.Designer.cs">
+    <Compile Include="formularios\formsArticulos\frmResumenArticulos.Designer.cs">
       <DependentUpon>frmResumenArticulos.cs</DependentUpon>
     </Compile>
     <Compile Include="frmVentanaPrincipal.cs">
@@ -92,19 +98,22 @@
     <Compile Include="TarjetaProducto.Designer.cs">
       <DependentUpon>TarjetaProducto.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmAgregarArticulo.resx">
+    <EmbeddedResource Include="formularios\formsArticulos\frmAgregarArticulo.resx">
       <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListadoArticulos.resx">
+    <EmbeddedResource Include="formularios\formsArticulos\frmListadoArticulos.resx">
       <DependentUpon>frmListadoArticulos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListadoCategoria.resx">
+    <EmbeddedResource Include="formularios\formsCategorias\frmListadoCategoria.resx">
       <DependentUpon>frmListadoCategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListadoMarcas.resx">
+    <EmbeddedResource Include="formularios\formsMarcas\frmAltaMarca.resx">
+      <DependentUpon>frmAltaMarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\formsMarcas\frmListadoMarcas.resx">
       <DependentUpon>frmListadoMarcas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmResumenArticulos.resx">
+    <EmbeddedResource Include="formularios\formsArticulos\frmResumenArticulos.resx">
       <DependentUpon>frmResumenArticulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVentanaPrincipal.resx">

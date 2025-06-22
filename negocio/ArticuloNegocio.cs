@@ -340,5 +340,21 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void DesvincularMarca(int IdMarcaADesvincular)
+        {
+            string consultaSQL = "update ARTICULOS set IdMarca = NULL WHERE IdMarca = @IdMarca";
+            try
+            {
+                datos.setearConsulta(consultaSQL);
+                datos.parametrizar("@IdMarca", IdMarcaADesvincular);
+                datos.ejecutarAccion();
+            }
+            catch( Exception ex) { throw ex; }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

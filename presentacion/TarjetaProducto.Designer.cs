@@ -62,6 +62,7 @@ namespace presentacion
             // 
             this.pbxImagenProducto.Dock = System.Windows.Forms.DockStyle.Left;
             this.pbxImagenProducto.Enabled = false;
+            this.pbxImagenProducto.ErrorImage = global::presentacion.Properties.Resources.imagen_default;
             this.pbxImagenProducto.Location = new System.Drawing.Point(0, 0);
             this.pbxImagenProducto.Name = "pbxImagenProducto";
             this.pbxImagenProducto.Size = new System.Drawing.Size(80, 83);

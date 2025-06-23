@@ -185,5 +185,11 @@
   <ItemGroup>
     <None Include="Resources\escoba.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\default-image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imagen-default.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

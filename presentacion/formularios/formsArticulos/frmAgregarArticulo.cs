@@ -141,11 +141,11 @@ namespace presentacion
         {
             try
             {
-                pbxImagen.Load(url);
+                pbxImagen.LoadAsync(url);
             }
             catch (Exception ex)
             {
-                pbxImagen.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW1WFWLAdUk4Uf4vzvwezXvAFnh6eCjY5oHw&s");
+                pbxImagen.Image = Properties.Resources.default_image;
             }
         }
 

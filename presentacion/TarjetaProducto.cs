@@ -34,11 +34,10 @@ namespace presentacion
             try
             {
                 pbxImagenProducto.LoadAsync(urlImagen);
-
             }
             catch (Exception ex)
             {
-                pbxImagenProducto.LoadAsync("https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg");
+                pbxImagenProducto.Image = Properties.Resources.imagen_default;
             }
         }
 

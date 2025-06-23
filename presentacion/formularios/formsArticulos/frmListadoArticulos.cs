@@ -159,11 +159,11 @@ namespace presentacion
             CategoriaNegocio negocioCategoria = new CategoriaNegocio();
 
             List<Marca> listadoMarcas = negocioMarca.listarMarcas();
-            List<Categoria> listadoCategorias = negocioCategoria.listarCategorias();
+            List<Categoria> listadoCategorias = negocioCategoria.ListarCategorias();
 
             cbxFiltroCategorias.DisplayMember = "Descripcion";
             cbxFiltroCategorias.ValueMember = "Id";
-            cbxFiltroCategorias.DataSource = negocioCategoria.listarCategorias();
+            cbxFiltroCategorias.DataSource = negocioCategoria.ListarCategorias();
             cbxFiltroCategorias.SelectedIndex = -1;
 
             cbxFiltroMarcas.DisplayMember = "Descripcion";

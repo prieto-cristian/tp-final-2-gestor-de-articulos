@@ -28,7 +28,7 @@ namespace presentacion
         }
         private void ListarCategorias()
         {
-            List<Categoria> listaCategorias = negocio.listarCategorias();
+            List<Categoria> listaCategorias = negocio.ListarCategorias();
             dgvCategorias.DataSource = listaCategorias;
             dgvCategorias.Columns["Id"].Visible = false;
         }
@@ -79,6 +79,20 @@ namespace presentacion
                 {
                     ListarCategorias();
                 }
+            }
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text.Length > 2)
+            {
+                List<Categoria> listaCategorias = negocio.ListarCategorias(txtFiltro.Text);
+                dgvCategorias.DataSource = listaCategorias;
+                dgvCategorias.Columns["Id"].Visible = false;
+            }
+            else
+            {
+                ListarCategorias();
             }
         }
     }

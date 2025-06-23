@@ -13,9 +13,9 @@ namespace negocio
         private AccesoADatos datos = null;
 
 
-        public List<Categoria> listarCategorias()
+        public List<Categoria> ListarCategorias()
         {
-            string consultaSQL = "SELECT    C.Id,    C.Descripcion,     COUNT(A.Id) AS CantidadArticulos FROM CATEGORIAS C LEFT JOIN ARTICULOS A ON A.IdMarca = C.Id GROUP BY C.Id, C.Descripcion ORDER BY CantidadArticulos DESC;";
+            string consultaSQL = "SELECT    C.Id,    C.Descripcion,     COUNT(A.Id) AS CantidadArticulos FROM CATEGORIAS C LEFT JOIN ARTICULOS A ON A.IdCategoria = C.Id GROUP BY C.Id, C.Descripcion ORDER BY CantidadArticulos DESC";
             datos = new AccesoADatos();
             try
             {
@@ -84,6 +84,30 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
+        }
+        public List<Categoria> ListarCategorias(string fragmento)
+        {
+            string consultaSQL = "SELECT C.Id, C.Descripcion, COUNT(A.Id) AS CantidadArticulos FROM CATEGORIAS C LEFT JOIN ARTICULOS A ON A.IdCategoria = C.Id WHERE C.Descripcion LIKE '%' + @Fragmento + '%' GROUP BY C.Id, C.Descripcion ORDER BY CantidadArticulos DESC;";
+            try
+            {
+                datos = new AccesoADatos();
+                datos.setearConsulta(consultaSQL);
+                datos.parametrizar("@Fragmento", fragmento);
+                datos.ejecutarAccion();
+                List<Categoria> categorias = new List<Categoria>();
+                while (datos.Lector.Read())
+                {
+                    Categoria aux = new Categoria();
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.CantidadDeArticulosAsociados = (int)datos.Lector["CantidadArticulos"];
+
+                    categorias.Add(aux);
+                }
+                return categorias;
+            }
+            catch (Exception ex) { throw ex; }
+            finally { datos.cerrarConexion(); }
         }
     }
 }

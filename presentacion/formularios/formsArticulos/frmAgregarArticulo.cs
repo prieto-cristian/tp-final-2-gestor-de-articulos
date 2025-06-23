@@ -128,7 +128,7 @@ namespace presentacion
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             cbxCategoria.DisplayMember = "Descripcion";
             cbxCategoria.ValueMember = "Id";
-            cbxCategoria.DataSource = categoriaNegocio.listarCategorias();
+            cbxCategoria.DataSource = categoriaNegocio.ListarCategorias();
             cbxCategoria.SelectedIndex = -1;
         }
 

@@ -36,6 +36,28 @@ namespace negocio
             catch (Exception ex) { throw ex; }
             finally { datos.cerrarConexion(); }
         }
+        public List<Marca> listarMarcas(string framento)
+        {
+            string consultaSQL = "SELECT    M.Id,    M.Descripcion,     COUNT(A.Id) AS CantidadArticulos FROM MARCAS M LEFT JOIN ARTICULOS A ON A.IdMarca = M.Id WHERE M.Descripcion LIKE '%' + @Fragmento + '%' GROUP BY M.Id, M.Descripcion ORDER BY CantidadArticulos DESC;";
+            try
+            {
+                datos.setearConsulta(consultaSQL);
+                datos.parametrizar("@Fragmento", framento);
+                datos.ejecutarAccion();
+                List<Marca> marcas = new List<Marca>();
+                while (datos.Lector.Read())
+                {
+                    Marca aux = new Marca();
+                    aux.Id = (int)(datos.Lector["Id"]);
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.CantidadDeArticulosAsociados = (int)datos.Lector["CantidadArticulos"];
+                    marcas.Add(aux);
+                }
+                return marcas;
+            }
+            catch(Exception ex) { throw ex; }
+            finally { datos.cerrarConexion(); }
+        }
 
         public string MarcaConMasArticulos()
         {

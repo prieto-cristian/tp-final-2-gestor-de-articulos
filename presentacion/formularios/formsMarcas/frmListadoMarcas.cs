@@ -83,5 +83,21 @@ namespace presentacion
                 ActualizarListado();
             }
         }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text.Length > 2)
+            {
+                MarcaNegocio negocio = new MarcaNegocio();
+                List<Marca> marcas = negocio.listarMarcas(txtFiltro.Text);
+                dgvMarcas.DataSource = marcas;
+                dgvMarcas.Columns["Id"].Visible = false;
+
+            }
+            else
+            {
+                ActualizarListado();
+            }
+        }
     }
 }

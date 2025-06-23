@@ -30,7 +30,6 @@
         {
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.txtFiltro = new System.Windows.Forms.TextBox();
-            this.lblTotalDeMarcas = new System.Windows.Forms.Label();
             this.lblNombreFiltro = new System.Windows.Forms.Label();
             this.btnCrear = new System.Windows.Forms.Button();
             this.dgvMarcas = new System.Windows.Forms.DataGridView();
@@ -43,7 +42,6 @@
             // panelSuperior
             // 
             this.panelSuperior.Controls.Add(this.txtFiltro);
-            this.panelSuperior.Controls.Add(this.lblTotalDeMarcas);
             this.panelSuperior.Controls.Add(this.lblNombreFiltro);
             this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSuperior.Location = new System.Drawing.Point(0, 0);
@@ -59,17 +57,7 @@
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(238, 25);
             this.txtFiltro.TabIndex = 3;
-            // 
-            // lblTotalDeMarcas
-            // 
-            this.lblTotalDeMarcas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotalDeMarcas.AutoSize = true;
-            this.lblTotalDeMarcas.Font = new System.Drawing.Font("Nirmala UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalDeMarcas.Location = new System.Drawing.Point(584, 9);
-            this.lblTotalDeMarcas.Name = "lblTotalDeMarcas";
-            this.lblTotalDeMarcas.Size = new System.Drawing.Size(130, 19);
-            this.lblTotalDeMarcas.TabIndex = 2;
-            this.lblTotalDeMarcas.Text = "TOTAL DE MARCAS:";
+            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
             // 
             // lblNombreFiltro
             // 
@@ -164,7 +152,6 @@
 
         private System.Windows.Forms.Panel panelSuperior;
         private System.Windows.Forms.TextBox txtFiltro;
-        private System.Windows.Forms.Label lblTotalDeMarcas;
         private System.Windows.Forms.Label lblNombreFiltro;
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.DataGridView dgvMarcas;

@@ -9,15 +9,16 @@ namespace presentacion
 {
     public static class ValidadorFormularios
     {
-        public static bool SoloNumeros(string texto)
+        public static bool PrecioValido(string texto)
         {
-            foreach (char c in texto) {
-                if (!(char.IsNumber(c)))
-                {
-                    return false;
-                }
+            try
+            {
+                double precioValido = double.Parse(texto);
+                return true;
             }
-            return true;
+            catch (Exception ex) { 
+                return false;
+            }
         }
         public static bool SinEspacios(string texto)
         {

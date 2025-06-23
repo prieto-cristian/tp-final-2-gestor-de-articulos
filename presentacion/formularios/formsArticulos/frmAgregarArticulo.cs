@@ -186,7 +186,7 @@ namespace presentacion
             {
                 precioErrorProvider.SetError(this.txtPrecio, "El precio es obligatorio");
             }
-            else if (!ValidadorFormularios.SoloNumeros(txtPrecio.Text))
+            else if (!ValidadorFormularios.PrecioValido(txtPrecio.Text))
             {
                 precioErrorProvider.SetError(this.txtPrecio, "Solo se admiten números");
             }

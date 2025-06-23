@@ -44,13 +44,13 @@ namespace presentacion
         private void btnArticulos_Click(object sender, EventArgs e)
         {
             cerrarVentanaActual();
+            CambiarNombreVentanaActual();
+            CambiarBotonActual(btnArticulos);
             frmListadoArticulos frmListado = new frmListadoArticulos();
             frmListado.MdiParent = this;
             panel1.Controls.Add(frmListado);
             panel1.Tag = frmListado;
-            CambiarBotonActual(btnArticulos);
             frmListado.Show();
-            CambiarNombreVentanaActual();
         }
         private void cerrarVentanaActual()
         {

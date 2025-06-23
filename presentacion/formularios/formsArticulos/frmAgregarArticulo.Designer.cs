@@ -215,6 +215,7 @@
             // pbxImagen
             // 
             this.pbxImagen.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbxImagen.ErrorImage = global::presentacion.Properties.Resources.default_image;
             this.pbxImagen.Location = new System.Drawing.Point(421, 105);
             this.pbxImagen.Name = "pbxImagen";
             this.pbxImagen.Size = new System.Drawing.Size(305, 304);

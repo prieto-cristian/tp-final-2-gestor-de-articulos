@@ -347,7 +347,7 @@ namespace presentacion
 
         private void ValidarLosRangosDePrecio(ErrorProvider errorProvider, TextBox textBox)
         {
-            if (!ValidadorFormularios.SoloNumeros(textBox.Text))
+            if (!ValidadorFormularios.PrecioValido(textBox.Text))
             {
                 errorProvider.SetError(textBox, "Ingrese solo números");
             }
